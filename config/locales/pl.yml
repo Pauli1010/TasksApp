@@ -1,0 +1,22 @@
+pl:
+  activemodel:
+    attributes:
+      user:
+        email: E-mail
+        password: Hasło
+        password_confirmation: Powtórz hasło
+  account:
+    show:
+      title: Moje konto
+  sessions:
+    new:
+      title: Logowanie
+      register: Zarejestruj się
+    form:
+      login: Zaloguj się
+  registrations:
+    new:
+      title: Rejestracja
+      login: Zaloguj się
+    form:
+      register: Zarejestruj się
