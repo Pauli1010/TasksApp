@@ -1,0 +1,36 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%= link_to 'TaskApp', root_path, class: 'navbar-brand' %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false", aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id='mainMenu' class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to t('.tastk'), '', class: "#{menu_active?('tasks')} nav-item nav-link" %>
+        </li>
+        <!--<li class="nav-item.dropdown">-->
+          <%#= link_to , '', class: "#{menu_active?('tasks')} nav-item nav-link" %>
+          <!--<div class="dropdown-menu">-->
+            <%#= link_to , '', class: "#{menu_active?('tasks')} nav-item nav-link" %>
+          <!--</div>-->
+        <!--</li>-->
+      </ul>
+
+      <ul class="navbar-nav navbar-right">
+        <li class="nav-item dropdown drop-to-right">
+          <%= link_to user_avatar(current_user), '', class: 'nav-link pb-0', id: 'user-dropdown', role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } %>
+
+          <div class="dropdown-menu">
+            <%= link_to 'Edytuj dane', '', class: "#{menu_active?('profile', action = 'edit')} dropdown-item" %>
+          </div>
+        <li class="nav-item">
+          <%= link_to logout_path, class: 'nav-link' do %>
+            <%= bootstrap_icon 'door-open', width: 20, height: 20 %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

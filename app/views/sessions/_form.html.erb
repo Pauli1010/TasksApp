@@ -1,13 +1,15 @@
-<%= form_with url: login_path, method: :post do |f| %>
-  <div class="field">
+<%= form_with url: login_path, method: :post, class: 'simple_form form-horizontal', id: "login-form" do |f| %>
+  <legend class="text-center mb-4"><%= t('.legend') %></legend>
+  <div class="form-label-group">
     <%= f.label :email, t('email', scope: 'activemodel.attributes.user') %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-label-group">
     <%= f.label :password, t('password', scope: 'activemodel.attributes.user') %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit t(".login") %>
+    <%= f.submit t(".login"), class: 'btn-sm btn-primary btn-max-width' %>
+    <%= link_to t('.register'), new_registration_path, class: 'btn-sm btn-primary btn-max-width' %>
   </div>
 <% end %>

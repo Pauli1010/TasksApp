@@ -2,7 +2,7 @@
 
 # AccountController provides logic for maintaining User's own data
 class AccountController < ApplicationController
-  before_action :require_login
+  layout 'application'
 
   def show; end
 

@@ -10,14 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <% if current_user %>
-      <%= render 'header' %>
-    <% end %>
-    <main class="container-fluid">
-      <%= render 'application/flash' %>
-      <%= yield %>
-    </main>
-    <%= render 'footer' %>
+  <body class="login-bg">
+    <div class="container-fluid login">
+      <div class="login-box">
+        <%= image_tag 'icon.png', alt: 'logo', class: 'favicon mb-4' %>
+        <h1 class="text-center">TaskApp</h1>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

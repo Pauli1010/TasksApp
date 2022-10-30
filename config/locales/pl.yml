@@ -8,15 +8,28 @@ pl:
   account:
     show:
       title: Moje konto
+  application:
+    flash:
+      close: Zamknij
   sessions:
     new:
       title: Logowanie
-      register: Zarejestruj się
     form:
+      legend: Zaloguj się do systemu zarządzania zadaniami
       login: Zaloguj się
+      register: Zarejestruj się
+  registration:
+    create:
+      success: Dziękujemy za rejestrację
   registrations:
     new:
       title: Rejestracja
-      login: Zaloguj się
     form:
+      legend: Zarejestruj się w systemie zarządzania zadaniami
+      login: Zaloguj się
       register: Zarejestruj się
+  session:
+    create:
+      success: Zalogowano
+    destroy:
+      success: Wylogowano z systemu

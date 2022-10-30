@@ -2,7 +2,8 @@
 
 # SessionsController provides logic for keeping User's session
 class SessionsController < ApplicationController
-  before_action :require_login, only: :destroy
+  layout 'login'
+  skip_before_action :require_login, only: [:new, :create]
 
   def create
     @user = login(params[:email], params[:password])
@@ -17,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(root_path, notice: t('success', scope: 'session.destroy'))
+    redirect_to(login_path, notice: t('success', scope: 'session.destroy'))
   end
 end

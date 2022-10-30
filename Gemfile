@@ -29,6 +29,15 @@ gem "jbuilder"
 
 gem 'sorcery'
 
+# gem 'sass-rails', '>= 6'
+gem 'sassc-rails', '>= 2.1.0'
+# gem 'haml-rails'
+
+gem 'bootstrap', '~> 4.5.3'
+gem 'bootstrap-icons-helper'
+gem 'simple_form'
+# gem 'will_paginate-bootstrap4'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

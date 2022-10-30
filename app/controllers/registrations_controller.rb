@@ -2,6 +2,8 @@
 
 # RegistrationsController provides logic for signing up users
 class RegistrationsController < ApplicationController
+  layout 'login'
+  skip_before_action :require_login
 
   def create
     @user = User.new(user_params)
