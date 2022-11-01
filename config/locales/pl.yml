@@ -1,6 +1,21 @@
 pl:
+  activerecord:
+    attributes:
+      task:
+        headers:
+          due_time: Deadline
+          done_time: Wykonano
+          highlited: Wyróżnione
+          note: Notatka
+          title: Nazwa zadania
   activemodel:
     attributes:
+      task:
+        due_time: Do kiedy
+        done_time: Wykonano
+        highlited: Wyróżnione
+        note: Notatka
+        title: Nazwa
       user:
         email: E-mail
         password: Hasło
@@ -9,8 +24,14 @@ pl:
     show:
       title: Moje konto
   application:
+    header:
+      tasks: Zadania
     flash:
       close: Zamknij
+  booleans:
+    question:
+      true: Tak
+      false: Nie
   sessions:
     new:
       title: Logowanie
@@ -33,3 +54,27 @@ pl:
       success: Zalogowano
     destroy:
       success: Wylogowano z systemu
+  tasks:
+    create:
+      error: Nie udało sie utworzyć zadania
+      success: Utworzono zadanie
+    edit:
+      title: Edytuj zadanie
+    form:
+      task_data: Dane zadania
+    index:
+      new: Nowe zadanie
+    new:
+      title: Nowe zadanie
+    show:
+      title: Dane zadania
+      edit: Edytuj
+    update:
+      error: Nie udało sie zaktualizować zadania
+      success: Zaktualizowano zadanie
+  views:
+    shared:
+      cancel: Anuluj
+      no_data: Brak danych do wyświetlenia
+      save: Zapisz
+      sort: Sortuj

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Rectify::ControllerHelpers
   before_action :require_login
 
   # OVERWRITTEN SORCERY METHOD

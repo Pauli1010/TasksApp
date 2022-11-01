@@ -2,7 +2,6 @@
 
 # AccountController provides logic for maintaining User's own data
 class AccountController < ApplicationController
-  layout 'application'
 
   def show; end
 

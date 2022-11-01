@@ -1,0 +1,10 @@
+.page-header
+  %h2.default-header= t('.title')
+
+.div
+  .row
+    .col-sm-1
+    .col-sm-10
+      = simple_form_for @form, method: :patch, html: { class: 'customized' } do |f|
+        = render 'form', f: f, task: @form
+    .col-sm-2

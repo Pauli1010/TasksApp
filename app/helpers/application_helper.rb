@@ -9,4 +9,33 @@ module ApplicationHelper
     initials = "#{user.first_name[0] if user.first_name.present?}#{user.last_name[0] if user.last_name.present?}"
     tag.div initials, class: 'avatar'
   end
+
+  def table_sorting(model, attribute, controller = nil, param = {})
+    selected = params[:sort_by] == attribute
+    ord = selected && params[:ord] && params[:ord] == 'ASC' ? 'DESC' : 'ASC'
+    controller = controller.presence || controller_name
+    header_name = t("activerecord.attributes.#{model}.headers.#{attribute}")
+    link_to({ controller: controller, action: :index, sort_by: attribute, ord: ord },
+            title: t('views.shared.sort'), class: "sort-table #{selected ? 'selected' : nil}") do
+      (header_name +
+        (selected ?
+           ord == 'DESC' ?
+             bootstrap_icon('caret-up-fill', width: 12, height: 12, fill: '#ffffff', class: 'sort-svg')
+             : bootstrap_icon('caret-down-fill', width: 12, height: 12, fill: '#ffffff', class: 'sort-svg')
+           : '')
+      ).html_safe
+    end
+  end
+
+  def yes_no_icon(val)
+    if val
+      bootstrap_icon 'check-circle-fill', width: 12, height: 12, class: 'text-success', 'data-toggle': 'tooltip', title: 'Tak'
+    else
+      bootstrap_icon "x-circle-fill", width: 12, height: 12, class: 'text-dark', 'data-toggle': 'tooltip', title: 'Nie'
+    end
+  end
+
+  def time_left(time)
+    "Pozostało: #{distance_of_time_in_words(time, Date.current)}"
+  end
 end

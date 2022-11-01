@@ -1,0 +1,43 @@
+.div.mt-3
+  .row
+    .col-sm-1
+    .col-sm-10
+      .card.mb-5
+        .card-header.bigger
+          = t('.title')
+          .tools-box.pull-right
+            = link_to edit_task_path(task), class: 'btn btn-sm btn-primary' do
+              = bootstrap_icon("pencil")
+              = t('.edit')
+        .card-body
+          .row
+            .col-sm-6
+              .row.fixed-medium-height
+                .col-sm-5.strong= t('activerecord.attributes.task.headers.title')
+                .col-sm-7= task.title
+              .row.fixed-medium-height
+                .col-sm-5.strong= t('activerecord.attributes.task.headers.due_time')
+                .col-sm-7
+                  = l(task.due_time, format: "%d-%m-%Y %l:%M")
+                  %br
+                  %strong= time_left(task.due_time)
+              .row.fixed-medium-height
+                .col-sm-5.strong= t('activerecord.attributes.task.headers.done_time')
+                .col-sm-7
+                  = t(task.done_time.present?, scope: 'booleans.question')
+                  - if task.done_time.present?
+                    = l(task.done_time, format: "%d-%m-%Y %l:%M")
+                  - else
+                    = yes_no_icon(false)
+              .row.fixed-medium-height
+                .col-sm-5.strong= t('activerecord.attributes.task.headers.highlited')
+                .col-sm-7
+                  = t(task.highlited, scope: 'booleans.question')
+                  = yes_no_icon(task.highlited)
+            .col-sm-6
+              .row
+                .col-sm-12
+                  .row.fixed-medium-height
+                    .col-sm-3.strong= t('activerecord.attributes.task.headers.note')
+                    .col-sm-9= task.note
+    .col-sm-1

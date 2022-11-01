@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get     'account' => 'account#show', :as => :account
   resources :registrations, only: [:new, :create]
   # resources :password_resets, except: [:show, :destroy, :index]
-  # resources :tasks
+  resources :tasks
 end

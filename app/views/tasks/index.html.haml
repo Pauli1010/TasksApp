@@ -1,0 +1,45 @@
+.page-header
+  %h2.default-header
+    Zadania
+    %small (#{tasks.count})
+    .pull-right
+      .btn-group
+        = link_to t('.new'), new_task_path, class: 'btn btn-primary'
+
+
+- if tasks.any?
+  .table-responsive-md
+    %table.table.table-bordered.table-hover.table-sm.table-striped
+      %thead.thead-dark.thead-fixed
+        %tr
+          %th{ scope: 'col' } #
+          %th.text-left{ scope: 'col' }= table_sorting('task', 'title')
+          %th{ scope: 'col' }= table_sorting('task', 'due_time')
+          %th{ scope: 'col' }= table_sorting('task', 'done_time')
+          %th{ scope: 'col' }= table_sorting('task', 'highlited')
+          %th{ scope: 'col' }= table_sorting('task', 'note')
+
+          %th{ scope: 'col' }
+
+      %tbody
+        - tasks.each_with_index do |t, index|
+          %tr
+            %th{ scope: 'row' }= index + 1
+            %td= link_to t.title, t
+            %td.text-center
+              = l(t.due_time, format: "%d-%m-%Y %l:%M")
+              %br
+              = time_left(t.due_time)
+            %td.text-center
+              - if t.done_time.present?
+                = l(t.done_time, format: "%d-%m-%Y %l:%M")
+              - else
+                = yes_no_icon(false)
+            %td.text-center= yes_no_icon(t.highlited)
+            %td.text-center= yes_no_icon(t.note.present?)
+
+            %td.text-right
+
+  -# = will_paginate tasks, list_classes: %w(pagination justify-content-end)
+- else
+  %p= t('views.shared.no_data')

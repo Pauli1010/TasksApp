@@ -30,8 +30,10 @@ gem "jbuilder"
 gem 'sorcery'
 
 # gem 'sass-rails', '>= 6'
+gem 'rails-i18n', '~> 7.0.0'
 gem 'sassc-rails', '>= 2.1.0'
-# gem 'haml-rails'
+gem 'haml-rails'
+gem "rectify"
 
 gem 'bootstrap', '~> 4.5.3'
 gem 'bootstrap-icons-helper'
