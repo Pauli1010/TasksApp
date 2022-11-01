@@ -38,4 +38,20 @@ module ApplicationHelper
   def time_left(time)
     "Pozostało: #{distance_of_time_in_words(time, Date.current)}"
   end
+
+  def link_to_edit(item, controller = nil)
+    controller = controller.presence || controller_name
+    link_to({ controller: controller, action: :edit, id: item.id }, title: t('views.shared.edit'), class: 'btn btn-xs btn-info') do
+      bootstrap_icon 'pencil', width: 12, height: 12, fill: '#ffffff'
+    end
+  end
+
+  def link_to_delete(item, controller = nil)
+    return if item.respond_to?(:destroyable?) && !item.destroyable?
+
+    controller = controller.presence || controller_name
+    link_to({ controller: controller, action: :destroy, id: item.id }, method: :delete, title: t('views.shared.delete'), data: { confirm: t('helpers.confirm') }, class: 'btn btn-xs btn-danger') do
+      bootstrap_icon 'trash', width: 12, height: 12, fill: '#ffffff'
+    end
+  end
 end

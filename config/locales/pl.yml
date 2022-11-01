@@ -58,6 +58,9 @@ pl:
     create:
       error: Nie udało sie utworzyć zadania
       success: Utworzono zadanie
+    destroy:
+      error: Nie udało się usunać zadania
+      success: Ununięto zadanie
     edit:
       title: Edytuj zadanie
     form:
@@ -75,6 +78,8 @@ pl:
   views:
     shared:
       cancel: Anuluj
+      delete: Usuń
+      edit: Edytuj
       no_data: Brak danych do wyświetlenia
       save: Zapisz
       sort: Sortuj

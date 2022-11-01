@@ -20,7 +20,7 @@
 
       <ul class="navbar-nav navbar-right">
         <li class="nav-item dropdown drop-to-right">
-          <%= link_to user_avatar(current_user), '', class: 'nav-link pb-0', id: 'user-dropdown', role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } %>
+          <%= link_to user_avatar(current_user), account_path, class: 'nav-link pb-0', id: 'user-dropdown', role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } %>
 
           <div class="dropdown-menu">
             <%= link_to 'Edytuj dane', '', class: "#{menu_active?('profile', action = 'edit')} dropdown-item" %>

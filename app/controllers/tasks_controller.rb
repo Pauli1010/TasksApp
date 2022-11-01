@@ -33,10 +33,24 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    DeleteTask.call(task) do
+      on(:ok)      { redirect_to tasks_path, notice: t('tasks.destroy.success') }
+      on(:invalid) { redirect_to tasks_path, alert: t('tasks.destroy.error') }
+    end
+  end
+
   private
 
   def tasks
-    @tasks ||= current_user.tasks
+    # TODO: ordering via note takes note value instead may need refactoring
+    @tasks ||= begin
+                 if params[:sort_by].present?
+                   current_user.tasks.order(params[:sort_by] => params[:ord])
+                 else
+                   current_user.tasks
+                 end
+               end
   end
 
   def task
