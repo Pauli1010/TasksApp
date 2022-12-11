@@ -31,6 +31,7 @@ gem 'sorcery'
 
 # gem 'sass-rails', '>= 6'
 gem 'rails-i18n', '~> 7.0.0'
+gem "jquery-rails"
 gem 'sassc-rails', '>= 2.1.0'
 gem 'haml-rails'
 gem "rectify"

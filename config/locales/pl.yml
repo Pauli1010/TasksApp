@@ -32,6 +32,8 @@ pl:
     question:
       true: Tak
       false: Nie
+  helpers:
+    confirm: Czy jesteś pewien?
   sessions:
     new:
       title: Logowanie

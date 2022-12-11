@@ -35,13 +35,12 @@
                 = l(t.done_time, format: "%d-%m-%Y %l:%M")
               - else
                 = yes_no_icon(false)
-            %td.text-center= yes_no_icon(t.highlited)
+            %td.text-center= yes_no_icon(t.highlited?)
             %td.text-center= yes_no_icon(t.note.present?)
 
             %td.text-right
               = link_to_edit(t)
-              -# TODO: needs configuration of JS
-              -# = link_to_delete(t)
+              = link_to_delete(t)
 
   -# = will_paginate tasks, list_classes: %w(pagination justify-content-end)
 - else

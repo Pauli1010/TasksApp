@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    DeleteTask.call(task) do
+    DeleteTask.call(task, current_user) do
       on(:ok)      { redirect_to tasks_path, notice: t('tasks.destroy.success') }
       on(:invalid) { redirect_to tasks_path, alert: t('tasks.destroy.error') }
     end
