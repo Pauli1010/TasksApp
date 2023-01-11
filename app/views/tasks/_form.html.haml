@@ -5,7 +5,7 @@
       .col-sm-7
         .row
           .col-sm-6= f.input :title, input_html: { autofocus: true, autocomplete: 'off' }
-          .col-sm-6= f.input :due_time, as: :datetime, html5: true, input_html: { class: 'datepicker', autocomplete: 'off' }
+          .col-sm-6= f.input :due_time, input_html: { class: 'datepicker', data: { provide: 'datepicker' } }
         .row
           .col-sm-9
           .col-sm-3= f.input :highlited, as: :boolean

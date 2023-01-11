@@ -1,16 +1,16 @@
-<%= form_with url: registrations_path, method: :post, scope: :user, class: 'simple_form form-horizontal' do |f| %>
+<%= simple_form_for @user, url: registrations_path, method: :post, scope: :user, class: 'simple_form form-horizontal', data: { turbo: "false" } do |f| %>
   <legend class="text-center mb-4"><%= t('.legend') %></legend>
   <div class="form-label-group">
     <%= f.label :email, t('email', scope: 'activemodel.attributes.user') %><br />
-    <%= f.text_field :email, class: 'form-control' %>
+    <%= f.input :email, class: 'form-control', label: false %>
   </div>
   <div class="form-label-group">
     <%= f.label :password, t('password', scope: 'activemodel.attributes.user') %><br />
-    <%= f.password_field :password, class: 'form-control' %>
+    <%= f.input :password, class: 'form-control', label: false %>
   </div>
   <div class="form-label-group">
     <%= f.label :password_confirmation, t('password_confirmation', scope: 'activemodel.attributes.user') %><br />
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= f.input :password_confirmation, class: 'form-control', label: false %>
   </div>
   <div class="actions">
     <%= f.submit t(".register"), class: 'btn-sm btn-primary btn-max-width' %>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TaskForm < Rectify::Form
+  include ActionView::Helpers::TranslationHelper
   mimic :task
 
   attribute :title, String
@@ -12,6 +13,8 @@ class TaskForm < Rectify::Form
   validate :due_time_in_future
 
   def due_time_in_future
-    errors.add(:due_time, t('.must_be_in_the_future')) unless due_time.future?
+    return unless due_time.present?
+
+    errors.add(:due_time, t('must_be_in_the_future', scope: 'errors.due_time')) unless due_time.to_datetime.future?
   end
 end

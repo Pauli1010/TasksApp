@@ -5,6 +5,6 @@
   .row
     .col-sm-1
     .col-sm-10
-      = simple_form_for @form, method: :patch, html: { class: 'customized' } do |f|
+      = simple_form_for @form, method: :patch, html: { class: 'customized', data: { turbo: "false" } } do |f|
         = render 'form', f: f, task: @form
     .col-sm-2

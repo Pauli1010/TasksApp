@@ -82,6 +82,8 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
+    bootstrap-datepicker-rails (1.9.0.1)
+      railties (>= 3.0)
     bootstrap-icons (1.0.12)
       nokogiri (~> 1)
     bootstrap-icons-helper (2.0.1)
@@ -328,6 +330,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap (~> 4.5.3)
+  bootstrap-datepicker-rails
   bootstrap-icons-helper
   capybara
   debug

@@ -5,6 +5,9 @@ class RegistrationsController < ApplicationController
   layout 'login'
   skip_before_action :require_login
 
+  def new
+    @user = User.new
+  end
   def create
     @user = User.new(user_params)
 
@@ -12,7 +15,7 @@ class RegistrationsController < ApplicationController
       redirect_to(login_path, notice: t('success', scope: 'registration.create'))
     else
       flash.now[:alert] = t('error', scope: 'registration.create')
-      render action: 'new'
+      render :new
     end
   end
 

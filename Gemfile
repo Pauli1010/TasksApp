@@ -38,6 +38,7 @@ gem "rectify"
 
 gem 'bootstrap', '~> 4.5.3'
 gem 'bootstrap-icons-helper'
+gem 'bootstrap-datepicker-rails'
 gem 'simple_form'
 # gem 'will_paginate-bootstrap4'
 
