@@ -8,8 +8,7 @@
     <%= f.label :password, t('password', scope: 'activemodel.attributes.user') %><br />
     <%= f.password_field :password, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit t(".login"), class: 'btn-sm btn-primary btn-max-width' %>
-    <%= link_to t('.register'), new_registration_path, class: 'btn-sm btn-primary btn-max-width' %>
+  <div class="actions text-center">
+    <%= f.submit t(".login"), class: 'btn btn-md btn-primary btn-max-width mt-4' %>
   </div>
 <% end %>

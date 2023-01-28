@@ -44,23 +44,30 @@ pl:
       must_be_in_the_future: Musi być w przyszłości
   helpers:
     confirm: Czy jesteś pewien?
+    order:
+      asc: Sortuj rosnąco
+      desc: Sortuj malejąco
+    time_left: 'Pozostało: %{time}'
+    past_time: 'Po czasie: %{time}'
   sessions:
     new:
+      register_account: Nie masz konta?
+      register: Zarejestruj się
       title: Logowanie
     form:
       legend: Zaloguj się do systemu zarządzania zadaniami
       login: Zaloguj się
-      register: Zarejestruj się
   registration:
     create:
       error: Nie udało się zarejestrować na platformie
       success: Dziękujemy za rejestrację
   registrations:
     new:
+      login: Zaloguj się
+      login_to_your_account: Masz juz konto?
       title: Rejestracja
     form:
       legend: Zarejestruj się w systemie zarządzania zadaniami
-      login: Zaloguj się
       register: Zarejestruj się
   session:
     create:

@@ -2,3 +2,10 @@
 <%= render 'application/flash' %>
 
 <%= render 'form' %>
+
+<ul class="no-bullets text-center h4 mb-4 font-weight-normal">
+  <li>
+    <%= t('.register_account') %>
+    <%= link_to t('.register'), new_registration_path %>
+  </li>
+</ul>

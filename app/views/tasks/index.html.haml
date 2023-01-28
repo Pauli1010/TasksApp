@@ -22,13 +22,15 @@
           %th{ scope: 'col' }
 
       %tbody
-        - tasks.each_with_index do |t, index|
+        - tasks.each_with_index do |t, i|
           %tr
-            %th{ scope: 'row' }= index + 1
+            %th{ scope: 'row' }= ln(i)
             %td= link_to t.title, t
             %td.text-center
               = l(t.due_time, format: "%d-%m-%Y %l:%M")
               %br
+              - unless t.due_time.future?
+                = bootstrap_icon 'exclamation-circle-fill', width: 12, height: 12, class: 'text-alert', 'data-toggle': 'tooltip', title: ''
               = time_left(t.due_time)
             %td.text-center
               - if t.done_time.present?

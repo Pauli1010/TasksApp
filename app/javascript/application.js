@@ -6,7 +6,11 @@ import "bootstrap-datepicker"
 
 $(document).ready(function () {
     $('.datepicker').datepicker({
-        format: 'dd-mm-yyyy' // TODO: fix for time
+        format: 'dd/mm/yyyy' // TODO: fix for time
+    });
+
+    $('button.close[data-dismiss="alert"]').click( function() {
+        $(this).parent().remove();
     });
 });
 

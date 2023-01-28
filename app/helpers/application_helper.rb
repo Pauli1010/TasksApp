@@ -20,23 +20,28 @@ module ApplicationHelper
       (header_name +
         (selected ?
            ord == 'DESC' ?
-             bootstrap_icon('caret-up-fill', width: 12, height: 12, fill: '#ffffff', class: 'sort-svg')
-             : bootstrap_icon('caret-down-fill', width: 12, height: 12, fill: '#ffffff', class: 'sort-svg')
+             bootstrap_icon('caret-up-fill', width: 12, height: 12, fill: '#ffffff', class: 'sort-svg', title: t('helpers.order.desc'))
+             : bootstrap_icon('caret-down-fill', width: 12, height: 12, fill: '#ffffff', class: 'sort-svg', title: t('helpers.order.asc'))
            : '')
       ).html_safe
     end
   end
 
+  # Helper method for assigning numbers on list
+  def ln(i)
+    i + 1
+  end
+
   def yes_no_icon(val)
     if val
-      bootstrap_icon 'check-circle-fill', width: 12, height: 12, class: 'text-success', 'data-toggle': 'tooltip', title: 'Tak'
+      bootstrap_icon 'check-circle-fill', width: 12, height: 12, class: 'text-success', 'data-toggle': 'tooltip', title: t('booleans.question.true')
     else
-      bootstrap_icon "x-circle-fill", width: 12, height: 12, class: 'text-dark', 'data-toggle': 'tooltip', title: 'Nie'
+      bootstrap_icon "x-circle-fill", width: 12, height: 12, class: 'text-dark', 'data-toggle': 'tooltip', title: t('booleans.question.true')
     end
   end
 
   def time_left(time)
-    "Pozostało: #{distance_of_time_in_words(time, Date.current)}"
+      t(time.future? ? 'time_left' : 'past_time', scope: 'helpers', time: distance_of_time_in_words(time, Date.current))
   end
 
   def link_to_edit(item, controller = nil)
