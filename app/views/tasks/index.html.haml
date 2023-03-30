@@ -27,20 +27,22 @@
             %th{ scope: 'row' }= ln(i)
             %td= link_to t.title, t
             %td.text-center
-              = l(t.due_time, format: "%d-%m-%Y %l:%M")
+              = l(t.due_time, format: "%d-%m-%Y %H:%M")
               %br
-              - unless t.due_time.future?
-                = bootstrap_icon 'exclamation-circle-fill', width: 12, height: 12, class: 'text-alert', 'data-toggle': 'tooltip', title: ''
-              = time_left(t.due_time)
+              - unless t.done_time.present?
+                - unless t.due_time.future?
+                  = bootstrap_icon 'exclamation-circle-fill', width: 12, height: 12, class: 'text-alert', 'data-toggle': 'tooltip', title: ''
+                = time_left(t.due_time)
             %td.text-center
               - if t.done_time.present?
-                = l(t.done_time, format: "%d-%m-%Y %l:%M")
+                = l(t.done_time, format: "%d-%m-%Y %H:%M")
               - else
                 = yes_no_icon(false)
             %td.text-center= yes_no_icon(t.highlited?)
             %td.text-center= yes_no_icon(t.note.present?)
 
             %td.text-right
+              = links_to_changing_statuses(t)
               = link_to_edit(t)
               = link_to_delete(t)
 

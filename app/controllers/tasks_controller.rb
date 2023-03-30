@@ -40,6 +40,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def change_status
+    @status = params[:status]
+
+    ChangeTaskStatus.call(@status, task, current_user) do
+      on(:ok)      { redirect_to tasks_path, notice: t('tasks.update.success') }
+      on(:invalid) { redirect_to tasks_path, alert: t('tasks.update.error') }
+    end
+  end
+
   private
 
   def tasks

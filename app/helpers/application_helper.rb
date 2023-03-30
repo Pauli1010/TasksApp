@@ -41,7 +41,7 @@ module ApplicationHelper
   end
 
   def time_left(time)
-      t(time.future? ? 'time_left' : 'past_time', scope: 'helpers', time: distance_of_time_in_words(time, Date.current))
+     t(time.future? ? 'time_left' : 'past_time', scope: 'helpers', time: distance_of_time_in_words(time, Date.current))
   end
 
   def link_to_edit(item, controller = nil)
@@ -57,6 +57,39 @@ module ApplicationHelper
     controller = controller.presence || controller_name
     link_to({ controller: controller, action: :destroy, id: item.id }, method: :delete, title: t('views.shared.delete'), data: { confirm: t('helpers.confirm') }, class: 'btn btn-xs btn-danger') do
       bootstrap_icon 'trash', width: 12, height: 12, fill: '#ffffff'
+    end
+  end
+
+  def links_to_changing_statuses(item, controller = nil)
+    return unless item.respond_to?(:status)
+
+    controller = controller.presence || controller_name
+    # action = "_#{item.class.name.singularize.downcase}".to_sym
+
+    change_to(controller, item, item.done? ? 'added' : 'done')
+  end
+
+  def change_to(controller, item, status)
+    link_to({ controller: controller, action: :change_status, id: item.id, status: status }, method: :patch, title: t(status, scope: 'views.shared.change_status_to'), class: "btn btn-xs btn-#{status_to_class(status)}") do
+      bootstrap_icon status_to_icon(status), width: 12, height: 12, fill: '#ffffff'
+    end
+  end
+
+  def status_to_class(status)
+    status_to_class_and_icon(status).first
+  end
+
+  def status_to_icon(status)
+    status_to_class_and_icon(status).last
+  end
+  def status_to_class_and_icon(status)
+    case status
+    when 'added'
+      ['warning', 'arrow-left']
+    when 'done'
+      ['success', 'check']
+    else
+      ['','']
     end
   end
 end

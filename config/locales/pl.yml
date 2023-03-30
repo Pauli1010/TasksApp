@@ -5,6 +5,7 @@ pl:
         headers:
           due_time: Deadline
           done_time: Wykonano
+          done: Zrobiono
           highlited: Wyróżnione
           note: Notatka
           title: Nazwa zadania
@@ -13,6 +14,7 @@ pl:
       task:
         due_time: Do kiedy
         done_time: Wykonano
+        done: Zrobiono
         highlited: Wyróżnione
         note: Notatka
         title: Nazwa
@@ -98,6 +100,9 @@ pl:
       success: Zaktualizowano zadanie
   views:
     shared:
+      change_status_to:
+        added: Przywróć
+        done: Zamknij
       cancel: Anuluj
       delete: Usuń
       edit: Edytuj

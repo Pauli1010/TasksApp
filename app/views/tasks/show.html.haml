@@ -18,7 +18,7 @@
               .row.fixed-medium-height
                 .col-sm-5.strong= t('activerecord.attributes.task.headers.due_time')
                 .col-sm-7
-                  = l(task.due_time, format: "%d-%m-%Y %l:%M")
+                  = l(task.due_time, format: "%d-%m-%Y %H:%M")
                   %br
                   %strong= time_left(task.due_time)
               .row.fixed-medium-height
@@ -26,7 +26,7 @@
                 .col-sm-7
                   = t(task.done_time.present?, scope: 'booleans.question')
                   - if task.done_time.present?
-                    = l(task.done_time, format: "%d-%m-%Y %l:%M")
+                    = l(task.done_time, format: "%d-%m-%Y %H:%M")
                   - else
                     = yes_no_icon(false)
               .row.fixed-medium-height
