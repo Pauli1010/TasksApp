@@ -1,3 +1,4 @@
 TASK:
-- Statuses: add status for done after due date -> add method for changing status for updating actions
-- UpdateTask -> add done date
+[] Statuses: add status for done after due date -> add method for changing status for updating actions
+[] UpdateTask -> add done date
+[] Add TESTS & move to TDD
