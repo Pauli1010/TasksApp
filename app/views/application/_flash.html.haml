@@ -1,0 +1,6 @@
+- alert_hash = { notice: 'primary', success: 'success', alert: 'danger', error: 'warning' }
+- flash.each do |type, message|
+  .alert.alert-dismissible.fade.show.mt-3{ class: "alert-#{alert_hash[type.to_sym]}", role: "alert" }
+    %button.close{ type: "button", data: { dismiss: "alert" }, aria: { label: t('.close') } }
+      %span{ aria: { hidden: true } } &times;
+    = message.html_safe

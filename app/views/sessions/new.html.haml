@@ -1,0 +1,9 @@
+%h2.text-center.h3.mb-3.font-weight-normal= t('.title')
+= render 'application/flash'
+
+= render 'form'
+
+%ul.text-center.mb-4.font-weight-normal
+  %li
+    = t('.register_account')
+    = link_to t('.register'), new_registration_path

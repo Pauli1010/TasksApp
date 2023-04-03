@@ -2,6 +2,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "jquery"
 import "jquery_ujs"
+import "bootstrap"
 import "bootstrap-datepicker"
 
 $(document).ready(function () {

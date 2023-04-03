@@ -5,27 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0be4f7e3-3b37-40e3-8577-9a89caecf943" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config/locales/simple_form.pl.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TasksApp.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/spare_css.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/account/show.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/application/_flash.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/application/_footer.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/application/_header.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/registrations/_form.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/registrations/new.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/sessions/_form.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/sessions/new.html.haml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/account_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/account_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/registrations_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/registrations_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/sessions_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/sessions_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/floating-labels.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/floating-labels.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/sessions.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/sessions.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/jobs/application_job.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/jobs/application_job.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mailers/application_mailer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/mailers/application_mailer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mailers/user_mailer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/mailers/user_mailer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/application_record.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/application_record.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/application/_header.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/application/_header.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/importmap.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/importmap.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/assets.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/assets.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/account/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/application/_flash.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/application/_footer.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/application/_header.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/login.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/login.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/registrations/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/registrations/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sessions/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sessions/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/pl.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/pl.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,44 +1,28 @@
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
-@import "bootstrap-datepicker";
-@import "floating-labels";
-@import "sessions";
+// FILE IS NOT ADDED TO ASSETS, IT CONTAINS ADDITIONAL STYLES //
+// IT SHOULD BE DELETED AFTER ALL NEEDED STYLES ARE MOVED TO PROPER FILES //
 
-body.login-bg { background-color: #f5f5f5; }
-.bg-light-darker { background-color: #f5f5f5; }
 
-h2.default-header { padding: 20px 10px; }
-h2.login-header { padding: 20px 0px; text-align: center; }
-.dropdown.drop-to-right .dropdown-menu { left: unset; right: 0; }
-.bootstrap-select .dropdown-menu.show { max-width: 100%; } // fix
+.fixed-medium-height { height: 58px; padding-top: 5px; padding-bottom: 5px; }
+.fixed-large-height { height: 88px; padding-top: 5px; padding-bottom: 5px; }
+.min-medium-height { min-height: 58px; padding-top: 5px; padding-bottom: 5px; margin-bottom: 10px; }
 
-.container-fluid.pt { padding-top: 20px; margin-bottom: 30px; }
-.pull-right { float: right; }
-.strong { font-weight: bold; }
-.hidden { display: none; }
-.nav-index-list {
-  .nav-link.active { color: #495057; }
-}
+nav form { padding-bottom: 0; }
 
-// text formatting - colors
-.text-alert { color: #dc3545 }
-
-// default list - no bullets
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-// form
-.datepicker { padding: 0.375rem 0.75rem; } // fix
-.form-check-input.is-valid ~ .form-check-label { color: #212529; } // fix
-form {
-  .error {
-    color: #721c24;
-    margin-left: 2px;
-    font-size: 14px;
+.img-thumbnail.default {
+  position: relative; width: 200px; height: auto; min-height: 100px; background-color: #fcfcfc;
+  &.empty:after {
+    position: absolute;
+    color: #aaa;
+    content: 'Brak załącznika';
+    width: 100%;
+    height: 20px;
+    top: calc((100px - 30px) / 2);
+    left: 0;
+    text-align: center;
   }
 }
+
+// popup
 
 .popup {
   display: none;
@@ -72,6 +56,7 @@ form {
   }
   .card-body { padding: 40px; }
   .link { display: none; }
+
   .close {
     position: absolute;
     top: 10px;
@@ -80,52 +65,18 @@ form {
   }
 }
 
-.avatar {
-  width: 30px;
-  height: 30px;
-  font-size: 0.8rem;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 4px;
-  text-align: center;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
+
+.list-tools-box {
+  text-align: right;
+  .btn { margin-bottom: 4px; line-height: 1.45; }
+  nav { display: inline-block; }
+  .pagination { margin-bottom: 0; }
 }
 
-// buttons
-.link { font-size: 0.9rem; }
-a.btn, .btn {
-  display: inline-block;
-}
-.btn-xs {
-  padding: 0.25rem 0.3rem;
-  font-size: 0.7rem;
-  line-height: 1;
-}
 
-.btn-sm {
-  display: inline-block;
-  height: 32px;
-  border-width: 1px;
-  &:hover {
-    text-decoration: none !important;
-  }
-}
-
-.btn-md {
-  display: inline-block;
-  padding: 0.25rem 0.3rem;
-  height: 50px;
-  border-width: 1px;
-  &:hover {
-    text-decoration: none !important;
-  }
-}
-
-.btn-centered { margin: auto; }
-
-// contract index
-.fixed-btn-width .btn { width: 85%; }
+// grid
+.row.top-padding { padding-top: 40px; }
+.col-sm-4.inner-padding { padding: 0 30px; }
 
 // cards
 .card.user-card {
@@ -157,6 +108,7 @@ form .card {
   .sort-svg { position: absolute; right: 5px; top: 4px; }
 }
 
+
 .table-sm { font-size: 13px; .link { font-size: 13px; }}
 .table tbody th, .table thead th { text-align: center; vertical-align: middle; }
 .table td { vertical-align: middle; }
@@ -169,7 +121,6 @@ form .card {
   z-index: 2;
   border: none;
 }
-
 #reaport-header.thead-fixed tr:nth-child(2) th {
   position: -webkit-sticky;
   position: sticky;
@@ -201,34 +152,9 @@ form .card {
 .id-col { max-width: 100px; }
 .no-wrap-col { white-space: nowrap; }
 
-.previous-statement { display: none; }
-.hide-more-table-elements { display: none; }
-
-// statements table forms
-tr.with-inputs {
-  vertical-align: middle;
-  .input-area {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    &.big { width: 90px; }
-  }
-  input { max-width: calc(100%); }
-  .primary {
-    color: #6c757d;
-    font-weight: bold;
-    svg:nth-of-type(1) { display: inline; }
-    svg:nth-of-type(2) { display: none; }
-  }
-  .success {
-    color: #28a745;
-    font-weight: bold;
-    svg:nth-of-type(1) { display: none; }
-    svg:nth-of-type(2) { display: inline; }
-  }
-}
 
 //search-form
+
 .show-search-form-js { display: none; }
 .search-form {
   padding: 20px 0;
@@ -265,36 +191,6 @@ tr.with-inputs {
 }
 
 // forms
-.simple_form.customized {
-  .col-sm-6 {
-    margin-bottom: 15px;
-  }
-  .input.boolean {
-    padding-top: 25px
-  }
-
-  label {
-    width: calc(100% - 35px);
-  }
-  input[type='checkbox'] {
-    margin-right: 15px;
-  }
-
-  input[type='date'],
-  input[type='datetime-local'],
-  input[type='text'] {
-    display: block;
-    width: 100%;
-    height: 39px;
-  }
-
-  textarea {
-    height: 130px;
-    display: block;
-    width: 100%;
-  }
-}
-
 .no-appendix {
   .input-group > .form-control:not(:last-child),
   .input-group > .custom-select:not(:last-child),
@@ -304,12 +200,6 @@ tr.with-inputs {
   }
   .input-group-append { display: none; }
 }
-
-.number_to_currency-js { text-align: right; }
-
-.no-validation .is-valid,
-form .no-validation .bootstrap-select.is-valid .btn.dropdown-toggle.btn-light
- { border-color: #ced4da; background-image: none; padding-right: 12px; }
 
 // horizontal_form
 .with-appendix .no-appendix .input-group-append {
@@ -377,6 +267,20 @@ form .bootstrap-select.is-invalid .btn.dropdown-toggle.btn-light {
     label { padding-left: 30px }
     textarea { display: none; }
     .work-memo-toggle-input { left: 10px; top: 7px; }
+  }
+}
+
+
+form {
+  padding-bottom: 20px;
+  .bootstrap-select .btn.dropdown-toggle.btn-light { background-color: #fff; border: 1px solid #ced4da; }
+  .bootstrap-select.is-valid .btn.dropdown-toggle.btn-light {
+    border-color: #28a745;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   }
 }
 
