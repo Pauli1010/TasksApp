@@ -12,7 +12,7 @@ RSpec.describe RegistrationsController, type: :controller do
   end
 
   describe "when no user is logged in" do
-    it "render new" do
+    it "renders new" do
       get :new
 
       expect(subject).to render_template(:new)
@@ -21,25 +21,26 @@ RSpec.describe RegistrationsController, type: :controller do
     end
   end
 
-  describe "when user is logged in" do
+  context "for logged in user" do
     let(:current_user) { user }
-    it "action new redirects to root" do
-      get :new
+    describe "when getting action new" do
+      it "redirects to root" do
+        get :new
 
-      expect(response).to redirect_to(root_path)
-      expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+        expect(response).to redirect_to(root_path)
+        expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+      end
     end
-  end
 
-  describe "when user is logged in" do
-    let(:current_user) { user }
-    it "action create redirects to root" do
-      expect do
-        post :create, params: { user: data }
-      end.not_to change { User.count }
+    describe "when trying to create" do
+      it "redirects to root" do
+        expect do
+          post :create, params: { user: data }
+        end.not_to change { User.count }
 
-      expect(response).to redirect_to(root_path)
-      expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+        expect(response).to redirect_to(root_path)
+        expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+      end
     end
   end
 
@@ -55,7 +56,7 @@ RSpec.describe RegistrationsController, type: :controller do
   end
 
   describe "when data is invalid" do
-    it 'creates the user' do
+    it 'does not create user' do
       data[:email] = ''
       expect do
         post :create, params: { user: data }
