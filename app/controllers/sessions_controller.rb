@@ -5,7 +5,12 @@ class SessionsController < ApplicationController
   layout 'login'
   skip_before_action :require_login, only: [:new, :create]
 
+  def new
+    redirect_to(root_path, notice: t('already_logged_in', scope: 'registration.new')) and return if current_user
+  end
   def create
+    redirect_to(root_path, notice: t('already_logged_in', scope: 'registration.new')) and return if current_user
+
     @user = login(params[:email], params[:password])
 
     if @user
