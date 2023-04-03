@@ -6,9 +6,13 @@ class RegistrationsController < ApplicationController
   skip_before_action :require_login
 
   def new
+    redirect_to(root_path, notice: t('already_logged_in', scope: 'registration.new')) and return if current_user
+
     @user = User.new
   end
   def create
+    redirect_to(root_path, notice: t('already_logged_in', scope: 'registration.new')) and return if current_user
+
     @user = User.new(user_params)
 
     if @user.save

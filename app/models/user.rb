@@ -5,7 +5,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   validates :password, presence: { message: I18n.t('errors.password.required') }, if: -> { new_record? || changes[:crypted_password] }
-  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, length: { minimum: 3, message: I18n.t('errors.password.too_short') }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: { message: I18n.t('errors.password_confirmation.different') }, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: { message: I18n.t('errors.password_confirmation.required') }, if: -> { new_record? || changes[:crypted_password] }
 

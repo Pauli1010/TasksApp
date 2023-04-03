@@ -37,6 +37,7 @@ pl:
   errors:
     password:
       required: Hasło jest wymagane
+      too_short: Hasło jest za krótkie (musi mieć przynajmniej 3 znaki)
     password_confirmation:
       different: Hasła się różnią
       required: Powtórzenie hasła jest wymagane
@@ -52,6 +53,8 @@ pl:
     time_left: 'Pozostało: %{time}'
     past_time: 'Po czasie: %{time}'
   registration:
+    new:
+      already_logged_in: Jesteś już zalogowany
     create:
       error: Nie udało się zarejestrować na platformie
       success: Dziękujemy za rejestrację
