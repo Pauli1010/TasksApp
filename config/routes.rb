@@ -9,8 +9,15 @@ Rails.application.routes.draw do
   match   'logout'  => 'sessions#destroy',  :as => :logout, via: [:get, :delete]
 
   get     'account' => 'account#show', :as => :account
-  resources :registrations, only: [:new, :create]
-  # resources :password_resets, except: [:show, :destroy, :index]
+
+  resources :registrations, only: [:new, :create] do
+    get :activate, on: :member
+  end
+
+  resources :password_resets, except: [:show, :destroy, :index] do
+    get :unlock, on: :member
+  end
+
   resources :tasks do
     member do
       patch :change_status

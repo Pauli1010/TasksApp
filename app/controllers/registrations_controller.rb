@@ -23,6 +23,17 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def activate
+    redirect_to(root_path, notice: t('already_logged_in', scope: 'registration.new')) and return if current_user
+
+    if @user = User.load_from_activation_token(params[:id])
+      @user.activate!
+      redirect_to(login_path, notice: t('success', scope: 'registration.activate'))
+    else
+      redirect_to(root_path, alert: t('error', scope: 'registration.activate'))
+    end
+  end
+
   private
 
   def user_params

@@ -1,0 +1,8 @@
+pl:
+  user_mailer:
+    activation_needed_email:
+      subject: "[%{app_name}] - Link aktywacyjny"
+    reset_password_email:
+      subject: "[%{app_name}] - Link do zmiany hasła"
+    send_unlock_token_email:
+      subject: "[%{app_name}] - Link do Odblokowania konta"

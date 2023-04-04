@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_30_131032) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_152540) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dictionaries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dictionary_items", force: :cascade do |t|
+    t.string "name"
+    t.bigint "dictionary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dictionary_id"], name: "index_dictionary_items_on_dictionary_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.bigint "user_id"
@@ -42,9 +56,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_131032) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "admin", default: false
+    t.string "activation_state"
+    t.string "activation_token"
+    t.datetime "activation_token_expires_at"
+    t.integer "failed_logins_count", default: 0
+    t.datetime "lock_expires_at"
+    t.string "unlock_token"
+    t.string "user_name"
+    t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
+    t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
 
 end

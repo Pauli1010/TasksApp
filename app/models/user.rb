@@ -13,4 +13,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false, message: I18n.t('errors.email.taken') }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: I18n.t('errors.email.invalid') }
 
+  def activation_state_pending?
+    activation_state == 'pending'
+  end
 end

@@ -53,6 +53,9 @@ pl:
     time_left: 'Pozostało: %{time}'
     past_time: 'Po czasie: %{time}'
   registration:
+    activate:
+      error: Nie udało się aktywowań konta. Sprawdź, czy link jest prawidłowy.
+      success: Aktywowano konto. Zaloguj się, by kontynuować.
     new:
       already_logged_in: Jesteś już zalogowany
     create:
@@ -68,6 +71,7 @@ pl:
       register: Zarejestruj się
   session:
     create:
+      cannot_login: Konto nie jest aktywne
       error: Nie udało się zalogować
       success: Zalogowano
     destroy:
