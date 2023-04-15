@@ -8,18 +8,21 @@ class RegistrationsController < ApplicationController
   def new
     redirect_to(root_path, notice: t('already_logged_in', scope: 'registration.new')) and return if current_user
 
-    @user = User.new
+    @form = RegistrationForm.new
   end
   def create
     redirect_to(root_path, notice: t('already_logged_in', scope: 'registration.new')) and return if current_user
 
-    @user = User.new(user_params)
+    @form = RegistrationForm.from_params(params)
 
-    if @user.save
-      redirect_to(login_path, notice: t('success', scope: 'registration.create'))
-    else
-      flash.now[:alert] = t('error', scope: 'registration.create')
-      render :new
+    RegisterUser.call(@form) do
+      on(:ok) {
+        redirect_to(login_path, notice: t('success', scope: 'registration.create'))
+      }
+      on(:invalid) {
+        flash.now[:alert] = t('error', scope: 'registration.create')
+        render :new
+      }
     end
   end
 

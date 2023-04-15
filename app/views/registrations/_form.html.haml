@@ -1,4 +1,4 @@
-= simple_form_for @user, url: registrations_path, method: :post, scope: :user, class: 'simple_form form-horizontal', data: { turbo: "false" } do |f|
+= simple_form_for @form, url: registrations_path, method: :post, scope: :user, class: 'simple_form form-horizontal', data: { turbo: "false" } do |f|
   %legend.text-center.mb-4= t('.legend')
   .form-label-group
     = f.label :email, t('email', scope: 'activemodel.attributes.user')

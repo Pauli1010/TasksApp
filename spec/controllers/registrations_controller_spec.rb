@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe RegistrationsController, type: :controller do
   let(:user) { create(:user) }
-  let!(:pending_user) { create(:user, :pending) }
+  let!(:pending_user) { create(:pending_user) }
   let(:current_user) { nil }
 
   let(:data) { attributes_for(:user) }
@@ -17,8 +17,8 @@ RSpec.describe RegistrationsController, type: :controller do
       get :new
 
       expect(subject).to render_template(:new)
-      expect(assigns(:user).class.name).to eq('User')
-      expect(assigns(:user).persisted?).to be false
+      expect(assigns(:form).class.name).to eq('RegistrationForm')
+      expect(assigns(:form).persisted?).to be false
     end
   end
 
