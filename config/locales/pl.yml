@@ -52,24 +52,41 @@ pl:
       desc: Sortuj malejąco
     time_left: 'Pozostało: %{time}'
     past_time: 'Po czasie: %{time}'
-  registration:
+  password_resets:
+    create:
+      error: Nie udało się wysłać maila z linkiem do resetu hasła. Spróbuj ponownie.
+      success: Link do resetu hasła został wysłany na Twój adres e-mail.
+    edit:
+      legend: Wpisz nowe hasło, którym bedziesz mógł logować się do portalu.
+      reset: Resetuj hasło
+      title: Resetuj hasło
+      wrong_token: Nie odnaleziono rządania.
+    new:
+      already_logged_in: Żeby zmienić hasło będąc zalogowanym, musisz podać obecne hasło.
+      legend: Podaj adres e-mail, którym rejestrowałeś sie w portalu, żeby otrzymać instrukcję resetu hasła.
+      reset: Wyślij instrukcję
+      title: Resetuj hasło
+    update:
+      error: Nie udało się zaktualizować hasła. Spróbuj ponownie.
+      success: Zaktualizowano hasło. Zaloguj się do serwisu nowymi danymi.
+  registrations:
     activate:
       error: Nie udało się aktywowań konta. Sprawdź, czy link jest prawidłowy.
       success: Aktywowano konto. Zaloguj się, by kontynuować.
-    new:
-      already_logged_in: Jesteś już zalogowany
     create:
       error: Nie udało się zarejestrować na platformie
       success: Dziękujemy za rejestrację
-  registrations:
     new:
+      already_logged_in: Jesteś już zalogowany
+      forgot_password: Zapomniałeś hasła?
       login: Zaloguj się
       login_to_your_account: Masz juz konto?
+      reset_password: Resetuj hasło
       title: Rejestracja
     form:
       legend: Zarejestruj się w systemie zarządzania zadaniami
       register: Zarejestruj się
-  session:
+  sessions:
     create:
       cannot_login: Konto nie jest aktywne
       error: Nie udało się zalogować
@@ -99,8 +116,10 @@ pl:
       success: Zaktualizowano zadanie
   sessions:
     new:
+      forgot_password: Zapomniałeś hasła?
       register_account: Nie masz konta?
       register: Zarejestruj się
+      reset_password: Resetuj hasło
       title: Logowanie
     form:
       legend: Zaloguj się do systemu

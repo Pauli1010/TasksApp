@@ -26,7 +26,7 @@ RSpec.describe SessionsController, type: :controller do
         get :new
 
         expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+        expect(flash[:notice]).to eq(I18n.t("registrations.new.already_logged_in"))
       end
     end
 
@@ -35,7 +35,7 @@ RSpec.describe SessionsController, type: :controller do
         post :create, params: { email: data[:email], password: data[:password] }
 
         expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+        expect(flash[:notice]).to eq(I18n.t("registrations.new.already_logged_in"))
       end
     end
 
@@ -44,7 +44,7 @@ RSpec.describe SessionsController, type: :controller do
         delete :destroy
 
         expect(response).to redirect_to(login_path)
-        expect(flash[:notice]).to eq(I18n.t("session.destroy.success"))
+        expect(flash[:notice]).to eq(I18n.t("sessions.destroy.success"))
         expect(assigns(:current_user)).to be nil
       end
     end
@@ -54,7 +54,7 @@ RSpec.describe SessionsController, type: :controller do
     it 'logs in user' do
       post :create, params: { email: data[:email], password: data[:password] }
 
-      expect(flash[:notice]).to eq(I18n.t("session.create.success"))
+      expect(flash[:notice]).to eq(I18n.t("sessions.create.success"))
       expect(assigns(:current_user)).not_to be nil
       expect(response).to redirect_to(account_path)
     end
@@ -64,9 +64,9 @@ RSpec.describe SessionsController, type: :controller do
     it 'does not log in user' do
       post :create, params: { email: data[:email], password: '' }
 
-      expect(flash[:alert]).to eq(I18n.t("session.create.error"))
-      expect(response.status).to eq(200)
-      expect(subject).to render_template(:new)
+      expect(flash[:alert]).to eq(I18n.t("sessions.create.error"))
+      expect(response.status).to eq(302)
+      expect(subject).to redirect_to(login_path)
     end
   end
 

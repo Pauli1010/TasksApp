@@ -2,7 +2,6 @@
 
 class RegistrationForm < Rectify::Form
   include ActionView::Helpers::TranslationHelper
-  # include ActiveRecord::Validations
   mimic :user
 
   attribute :email

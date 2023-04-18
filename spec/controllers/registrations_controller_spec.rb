@@ -29,7 +29,7 @@ RSpec.describe RegistrationsController, type: :controller do
         get :new
 
         expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+        expect(flash[:notice]).to eq(I18n.t("registrations.new.already_logged_in"))
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe RegistrationsController, type: :controller do
         end.not_to change { User.count }
 
         expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+        expect(flash[:notice]).to eq(I18n.t("registrations.new.already_logged_in"))
       end
     end
 
@@ -53,7 +53,7 @@ RSpec.describe RegistrationsController, type: :controller do
         end.not_to change { User.count }
 
         expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to eq(I18n.t("registration.new.already_logged_in"))
+        expect(flash[:notice]).to eq(I18n.t("registrations.new.already_logged_in"))
       end
     end
   end
@@ -66,7 +66,7 @@ RSpec.describe RegistrationsController, type: :controller do
         end.to change(ActionMailer::Base.deliveries, :length).by(1)
       end.to change { User.count }.by(1)
 
-      expect(flash[:notice]).to eq(I18n.t("registration.create.success"))
+      expect(flash[:notice]).to eq(I18n.t("registrations.create.success"))
       expect(response).to redirect_to(login_path)
     end
   end
@@ -78,7 +78,7 @@ RSpec.describe RegistrationsController, type: :controller do
         post :create, params: { user: data }
       end.not_to change { User.count }
 
-      expect(flash[:alert]).to eq(I18n.t("registration.create.error"))
+      expect(flash[:alert]).to eq(I18n.t("registrations.create.error"))
       expect(response.status).to eq(200)
       expect(subject).to render_template(:new)
     end
@@ -91,7 +91,7 @@ RSpec.describe RegistrationsController, type: :controller do
       end.not_to change { User.where(activation_state: 'pending').count }
 
       expect(response).to redirect_to(root_path)
-      expect(flash[:alert]).to eq(I18n.t("registration.activate.error"))
+      expect(flash[:alert]).to eq(I18n.t("registrations.activate.error"))
       expect(pending_user.activation_state_pending?).to be true
     end
   end
@@ -105,7 +105,7 @@ RSpec.describe RegistrationsController, type: :controller do
       end.to change { User.where(activation_state: 'pending').count }.by(-1)
 
       expect(response).to redirect_to(login_path)
-      expect(flash[:notice]).to eq(I18n.t("registration.activate.success"))
+      expect(flash[:notice]).to eq(I18n.t("registrations.activate.success"))
       pending_user.reload
       expect(pending_user.activation_state_pending?).to be false
       expect(pending_user.activation_token).to be nil
