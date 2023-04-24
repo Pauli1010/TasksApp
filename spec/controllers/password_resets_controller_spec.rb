@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe PasswordResetsController, type: :controller do
   let!(:user) { create(:user) }
   let!(:pending_user) { create(:pending_user) }
-  let!(:reseting_user) { create(:user,
+  let!(:resetting_user) { create(:user,
                                 reset_password_token: Faker::Internet.password(max_length: 20),
                                 reset_password_email_sent_at: Date.current - 2.hours) }
   let(:current_user) { nil }
@@ -24,7 +24,7 @@ RSpec.describe PasswordResetsController, type: :controller do
   end
 
   context "for logged in user" do
-    let(:current_user) { reseting_user }
+    let(:current_user) { resetting_user }
     describe "when getting action new" do
       it "redirects to account" do
         get :new
@@ -47,7 +47,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
     describe "when getting action edit" do
       it "redirects to account" do
-        get :edit, params: { id: reseting_user.reset_password_token }
+        get :edit, params: { id: resetting_user.reset_password_token }
 
         expect(response).to redirect_to(account_path)
         expect(flash[:notice]).to eq(I18n.t("password_resets.new.already_logged_in"))
@@ -57,7 +57,7 @@ RSpec.describe PasswordResetsController, type: :controller do
     describe "when trying to change password" do
       it "redirects to account" do
         expect do
-          get :update, params: { id: reseting_user.reset_password_token }
+          get :update, params: { id: resetting_user.reset_password_token }
         end.not_to change { User.where(reset_password_token: nil).count }
 
         expect(response).to redirect_to(account_path)
@@ -96,7 +96,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
   describe "when trying to get edit with wrong token" do
     it "redirects to root" do
-      get :edit, params: { id: reseting_user.reset_password_token[3..-1] }
+      get :edit, params: { id: resetting_user.reset_password_token[3..-1] }
 
       expect(response).to redirect_to(login_path)
       expect(flash[:alert]).to eq(I18n.t("password_resets.edit.wrong_token"))
@@ -106,7 +106,7 @@ RSpec.describe PasswordResetsController, type: :controller do
   describe "when trying to change password with wrong token" do
     it 'redirects to root' do
       expect do
-        get :update, params: { id: reseting_user.reset_password_token[3..-1],
+        get :update, params: { id: resetting_user.reset_password_token[3..-1],
                                user: {
                                  password: pass,
                                  password_confirmation: pass
@@ -115,15 +115,15 @@ RSpec.describe PasswordResetsController, type: :controller do
 
       expect(response).to redirect_to(edit_password_reset_path)
       expect(flash[:alert]).to eq(I18n.t("password_resets.edit.wrong_token"))
-      reseting_user.reload
-      expect(reseting_user.reset_password_token).not_to be nil
+      resetting_user.reload
+      expect(resetting_user.reset_password_token).not_to be nil
     end
   end
 
   describe "when trying to change password with unmatchig passwords" do
     it 'redirects to root' do
       expect do
-        get :update, params: { id: reseting_user.reset_password_token,
+        get :update, params: { id: resetting_user.reset_password_token,
                                user: {
                                  password: pass,
                                  password_confirmation: "#{pass}123"
@@ -132,15 +132,15 @@ RSpec.describe PasswordResetsController, type: :controller do
 
       expect(response).to have_http_status(200)
       expect(flash[:alert]).to eq(I18n.t("password_resets.update.error"))
-      reseting_user.reload
-      expect(reseting_user.reset_password_token).not_to be nil
+      resetting_user.reload
+      expect(resetting_user.reset_password_token).not_to be nil
     end
   end
 
   describe "when trying to change password with correct token" do
     it "resets user password and redirects to login path" do
       expect do
-        get :update, params: { id: reseting_user.reset_password_token,
+        get :update, params: { id: resetting_user.reset_password_token,
                                user: {
                                  password: pass,
                                  password_confirmation: pass
@@ -149,8 +149,8 @@ RSpec.describe PasswordResetsController, type: :controller do
 
       expect(response).to redirect_to(login_path)
       expect(flash[:notice]).to eq(I18n.t("password_resets.update.success"))
-      reseting_user.reload
-      expect(reseting_user.reset_password_token).to be nil
+      resetting_user.reload
+      expect(resetting_user.reset_password_token).to be nil
     end
   end
 end
