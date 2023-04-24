@@ -53,6 +53,10 @@ pl:
     time_left: 'Pozostało: %{time}'
     past_time: 'Po czasie: %{time}'
   password_resets:
+    unlock:
+      error: Nie udało sie odblokować konta.
+      logged_in_user: Rządana akcja jest niedostępna dla zalogowanego użytkownika.
+      success: Odblokowano konto.
     create:
       error: Nie udało się wysłać maila z linkiem do resetu hasła. Spróbuj ponownie.
       success: Link do resetu hasła został wysłany na Twój adres e-mail.

@@ -56,4 +56,16 @@ class PasswordResetsController < ApplicationController
       }
     end
   end
+
+  def unlock
+    redirect_to(root_path, alert: t('logged_in_user', scope: 'password_resets.unlock')) and return if current_user
+
+    @token = params[:id]
+    @user = User.load_from_unlock_token(@token)
+
+    redirect_to(root_path, alert: t('error', scope: 'password_resets.unlock')) and return unless @user
+
+    @user.login_unlock!
+    redirect_to(login_path, notice: t('success', scope: 'password_resets.unlock'))
+  end
 end

@@ -5,8 +5,13 @@ RSpec.describe PasswordResetsController, type: :controller do
   let!(:user) { create(:user) }
   let!(:pending_user) { create(:pending_user) }
   let!(:resetting_user) { create(:user,
-                                reset_password_token: Faker::Internet.password(max_length: 20),
-                                reset_password_email_sent_at: Date.current - 2.hours) }
+                                 reset_password_token: Faker::Internet.password(max_length: 20),
+                                 reset_password_email_sent_at: Date.current - 2.hours) }
+  let!(:locked_user) { create(:user,
+                              failed_logins_count: 11,
+                              unlock_token: Faker::Internet.password(max_length: 20),
+                              lock_expires_at: Date.current + 2.days)}
+
   let(:current_user) { nil }
   let(:pass) { Faker::Internet.password }
 
@@ -57,7 +62,7 @@ RSpec.describe PasswordResetsController, type: :controller do
     describe "when trying to change password" do
       it "redirects to account" do
         expect do
-          get :update, params: { id: resetting_user.reset_password_token }
+          patch :update, params: { id: resetting_user.reset_password_token }
         end.not_to change { User.where(reset_password_token: nil).count }
 
         expect(response).to redirect_to(account_path)
@@ -81,7 +86,6 @@ RSpec.describe PasswordResetsController, type: :controller do
 
   describe "when provided email is not saved in database" do
     it 'does returns proper response' do
-
       expect do
         expect do
           post :create, params: { email: Faker::Internet.email }
@@ -106,7 +110,7 @@ RSpec.describe PasswordResetsController, type: :controller do
   describe "when trying to change password with wrong token" do
     it 'redirects to root' do
       expect do
-        get :update, params: { id: resetting_user.reset_password_token[3..-1],
+        patch :update, params: { id: resetting_user.reset_password_token[3..-1],
                                user: {
                                  password: pass,
                                  password_confirmation: pass
@@ -123,7 +127,7 @@ RSpec.describe PasswordResetsController, type: :controller do
   describe "when trying to change password with unmatchig passwords" do
     it 'redirects to root' do
       expect do
-        get :update, params: { id: resetting_user.reset_password_token,
+        patch :update, params: { id: resetting_user.reset_password_token,
                                user: {
                                  password: pass,
                                  password_confirmation: "#{pass}123"
@@ -140,7 +144,7 @@ RSpec.describe PasswordResetsController, type: :controller do
   describe "when trying to change password with correct token" do
     it "resets user password and redirects to login path" do
       expect do
-        get :update, params: { id: resetting_user.reset_password_token,
+        patch :update, params: { id: resetting_user.reset_password_token,
                                user: {
                                  password: pass,
                                  password_confirmation: pass
@@ -151,6 +155,52 @@ RSpec.describe PasswordResetsController, type: :controller do
       expect(flash[:notice]).to eq(I18n.t("password_resets.update.success"))
       resetting_user.reload
       expect(resetting_user.reset_password_token).to be nil
+    end
+  end
+
+  describe "when user is logged and is trying to unlock with good token" do
+    let(:current_user) { user }
+    it "redirects to root" do
+      expect do
+        get :unlock, params: { id: locked_user.unlock_token }
+      end.not_to change { User.where(unlock_token: nil).count }
+
+      expect(response).to redirect_to(root_path)
+      expect(flash[:alert]).to eq(I18n.t("password_resets.unlock.logged_in_user"))
+      locked_user.reload
+      expect(locked_user.failed_logins_count).to eq(11)
+      expect(locked_user.unlock_token).not_to be nil
+      expect(locked_user.lock_expires_at).not_to be nil
+    end
+  end
+
+  describe "when locked user is trying to unlock with wrong token" do
+    it "redirects to root" do
+      expect do
+        get :unlock, params: { id: locked_user.unlock_token[0..-4] }
+      end.not_to change { User.where(unlock_token: nil).count }
+
+      expect(response).to redirect_to(root_path)
+      expect(flash[:alert]).to eq(I18n.t("password_resets.unlock.error"))
+      locked_user.reload
+      expect(locked_user.failed_logins_count).to eq(11)
+      expect(locked_user.unlock_token).not_to be nil
+      expect(locked_user.lock_expires_at).not_to be nil
+    end
+  end
+
+  describe "when locked user is trying to unlock with wrong token" do
+    it "redirects to root" do
+      expect do
+        get :unlock, params: { id: locked_user.unlock_token }
+      end.to change { User.where(unlock_token: nil).count }.by(1)
+
+      expect(response).to redirect_to(login_path)
+      expect(flash[:notice]).to eq(I18n.t("password_resets.unlock.success"))
+      locked_user.reload
+      expect(locked_user.failed_logins_count).to eq(0)
+      expect(locked_user.unlock_token).to be nil
+      expect(locked_user.lock_expires_at).to be nil
     end
   end
 end
