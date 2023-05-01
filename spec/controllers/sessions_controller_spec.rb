@@ -56,9 +56,24 @@ RSpec.describe SessionsController, type: :controller do
 
       expect(flash[:notice]).to eq(I18n.t("sessions.create.success"))
       expect(assigns(:current_user)).not_to be nil
+      expect(assigns(:current_user)).to eq(user)
+      expect(user.remember_me_token).to be nil
       expect(response).to redirect_to(account_path)
     end
   end
+
+  describe "when data is valid and remember me token set" do
+    it 'logs in user and created rememeber me token' do
+      post :create, params: { email: data[:email], password: data[:password], remember_me: true }
+
+      expect(flash[:notice]).to eq(I18n.t("sessions.create.success"))
+      expect(assigns(:current_user)).not_to be nil
+      expect(assigns(:current_user)).to eq(user)
+      expect(assigns(:current_user).remember_me_token).not_to be nil
+      expect(response).to redirect_to(account_path)
+    end
+  end
+
 
   describe "when data is invalid" do
     it 'does not log in user' do

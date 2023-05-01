@@ -27,6 +27,12 @@
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
+
+  .form-control[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+  }
 }
 
 span.error {

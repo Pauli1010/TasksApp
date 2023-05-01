@@ -8,5 +8,8 @@
     = f.label :password, t('password', scope: 'activemodel.attributes.user')
     %br
     = f.password_field :password, class: 'form-control'
+  .form-label-group
+    = f.check_box :remember_me, class: 'form-control'
+    = f.label :remember_me, t('remember_me', scope: 'activemodel.attributes.user')
   .actions.text-center
     = f.submit t(".login"), class: 'btn-sm btn-primary btn-max-width'

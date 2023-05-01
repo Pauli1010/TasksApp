@@ -22,6 +22,7 @@ pl:
         email: E-mail
         password: Hasło
         password_confirmation: Powtórz hasło
+        remember_me: Zapamiętaj mnie
   account:
     show:
       title: Moje konto
