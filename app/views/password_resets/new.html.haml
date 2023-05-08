@@ -2,14 +2,15 @@
 = render 'application/flash'
 
 = simple_form_for @form, url: password_resets_path, method: :post, scope: :user, class: 'simple_form form-horizontal', data: { turbo: "false" } do |f|
-  %legend.text-center.mb-4= t('.legend')
-  .form-label-group
-    = f.label :email, t('email', scope: 'activemodel.attributes.user')
-    %br
-    = f.input :email, class: 'form-control', label: false
+  %fieldset
+    %legend.text-center.mb-4= t('.legend')
+    .form-label-group
+      = f.label :email, t('email', scope: 'activemodel.attributes.user')
+      %br
+      = f.input :email, class: 'form-control', label: false
 
-  .actions.text-center
-    = f.submit t(".reset"), class: 'btn-sm btn-primary btn-max-width'
+    .actions.text-center
+      = f.submit t(".reset"), class: 'btn-sm btn-primary btn-max-width'
 
 
 %ul.text-center.mb-4.font-weight-normal

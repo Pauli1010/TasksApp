@@ -23,6 +23,17 @@
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
+
+  &.checkbox-label {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: 20px;
+    padding: 0 10px !important;
+    font-size: 13px !important;
+    color: #495057 !important;
+    vertical-align: top;
+  }
 }
 
 .form-label-group input::-webkit-input-placeholder {
