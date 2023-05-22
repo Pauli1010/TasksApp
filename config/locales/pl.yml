@@ -26,6 +26,9 @@ pl:
   account:
     show:
       title: Moje konto
+    update:
+      error: Nie udało sie zaktualizować danych.
+      success: Zaktualizowano dane.
   application:
     header:
       tasks: Zadania
@@ -46,6 +49,8 @@ pl:
       invalid: E-mail jest nieprawidłowy
       required: E-mail jest wymagany
       taken: E-mail został już zajęty
+  flash_messages:
+    login_required: Musisz sie zalogować, zeby kontunować.
   helpers:
     confirm: Czy jesteś pewien?
     order:

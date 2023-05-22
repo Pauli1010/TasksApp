@@ -71,9 +71,6 @@ group :development, :test do
   gem "faker"
   gem 'wisper-rspec', '~> 1.1'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "rspec-rails"
-  gem "factory_bot_rails"
-  gem "faker"
 end
 
 group :development do

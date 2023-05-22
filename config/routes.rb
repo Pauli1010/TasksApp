@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post    'login'   => 'sessions#create'
   match   'logout'  => 'sessions#destroy',  :as => :logout, via: [:get, :delete]
 
-  get     'account' => 'account#show', :as => :account
+  resource 'account', only: [:show, :edit, :update], controller: :account do
+    resources :password_resets, only: [:edit, :update]
+  end
 
   resources :registrations, only: [:new, :create] do
     get :activate, on: :member
