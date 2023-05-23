@@ -10,10 +10,10 @@
             = link_to edit_account_path, class: 'btn btn-sm btn-primary' do
               = bootstrap_icon("pencil")
               = t('.edit')
-            = link_to '', class: 'btn btn-sm btn-primary' do
+            = link_to edit_password_account_path, class: 'btn btn-sm btn-primary' do
               = bootstrap_icon("pencil")
               = t('.edit_password')
-        %dd.card-body
+        %dl.card-body
           .row
             .col-sm-6
               .row.fixed-medium-height

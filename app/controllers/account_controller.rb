@@ -21,4 +21,21 @@ class AccountController < ApplicationController
       }
     end
   end
+
+  def edit_password
+    @form = ChangePasswordForm.new
+  end
+
+  def update_password
+    @form = ChangePasswordForm.from_params(params)
+    ChangePassword.call(@form, current_user) do
+      on(:ok) {
+        redirect_to(account_path, notice: t('success', scope: 'account.update_password'))
+      }
+      on(:invalid) {
+        flash.now[:alert] = t('error', scope: 'account.update_password')
+        render :edit_password
+      }
+    end
+  end
 end

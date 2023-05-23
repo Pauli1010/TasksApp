@@ -8,6 +8,7 @@ RSpec.describe AccountController, type: :controller do
   let(:email) { Faker::Internet.email }
   let(:user_name) { Faker::Name.name }
   let(:too_long_user_name) { Faker::Alphanumeric.alpha(number: 90) }
+  let(:pass) { Faker::Internet.password }
 
   before do
     login_user(current_user) if current_user
@@ -84,6 +85,46 @@ RSpec.describe AccountController, type: :controller do
         user.reload
         expect(user.user_name).not_to equal too_long_user_name
         expect(user.user_name).to equal user.user_name
+      end
+    end
+
+    describe "when trying to get edit_password" do
+      it "renders" do
+        get :edit_password
+
+        expect(response).to render_template(:edit_password)
+      end
+    end
+
+    describe "when updating password with valida data" do
+      it 'updates the password' do
+        old_password = user.crypted_password
+        patch :update_password, params: {
+                                 user: {
+                                   password: pass,
+                                   password_confirmation: pass
+                                 }}
+
+        expect(response).to redirect_to(account_path)
+        expect(flash[:notice]).to eq(I18n.t("account.update_password.success"))
+        user.reload
+        expect(user.crypted_password).not_to eq old_password
+      end
+    end
+
+    describe "when updating password with invalid data" do
+      it 'updates the password' do
+        old_password = user.crypted_password
+        patch :update_password, params: {
+          user: {
+            password: pass,
+            password_confirmation: pass[3..-1]
+          }}
+
+        expect(response).to render_template(:edit_password)
+        expect(flash[:alert]).to eq(I18n.t("account.update_password.error"))
+        user.reload
+        expect(user.crypted_password).to eq old_password
       end
     end
   end

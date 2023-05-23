@@ -29,12 +29,17 @@ pl:
   account:
     edit:
       title: Edytuj swoje dane
+    edit_password:
+      title: Zaktualizuj hasło
     show:
       edit_password: Edytuj hasło
       title: Moje konto
     update:
       error: Nie udało sie zaktualizować danych.
       success: Zaktualizowano dane.
+    update_password:
+      error: Nie udało sie zaktualizować hasła.
+      success: Zaktualizowano hasło.
   application:
     header:
       tasks: Zadania
