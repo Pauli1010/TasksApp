@@ -19,12 +19,18 @@ pl:
         note: Notatka
         title: Nazwa
       user:
+        created_at: Data rejestracji
         email: E-mail
         password: Hasło
         password_confirmation: Powtórz hasło
         remember_me: Zapamiętaj mnie
+        updated_at: Data aktualizacji danych
+        user_name: Nazwa użytkownika
   account:
+    edit:
+      title: Edytuj swoje dane
     show:
+      edit_password: Edytuj hasło
       title: Moje konto
     update:
       error: Nie udało sie zaktualizować danych.
@@ -134,6 +140,9 @@ pl:
     form:
       legend: Zaloguj się do systemu
       login: Zaloguj się
+  time:
+    formats:
+      date_and_time: "%d-%m-%Y %H:%M"
   views:
     shared:
       change_status_to:

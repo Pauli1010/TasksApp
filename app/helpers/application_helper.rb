@@ -6,8 +6,7 @@ module ApplicationHelper
   end
 
   def user_avatar(user)
-    initials = "#{user.first_name[0] if user.first_name.present?}#{user.last_name[0] if user.last_name.present?}"
-    tag.div initials, class: 'avatar'
+    tag.div user.initials.capitalize, class: 'avatar'
   end
 
   def table_sorting(model, attribute, controller = nil, param = {})

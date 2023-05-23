@@ -1,0 +1,18 @@
+.card
+  %fieldset
+    %legend.card-header.bigger
+      = t('account.edit.title')
+    .card-body
+      .row
+        .col-sm-5
+          .row
+            .col-sm-12= f.input :user_name, input_html: { autofocus: true, autocomplete: 'off' }
+        .col-sm-5
+          .row
+            .col-sm-12
+        .col-sm-2
+
+      .row.mt-sm
+        .col-sm-12.text-center
+          = f.button :submit, t('views.shared.save'), class: 'btn-sm btn-info text-center'
+          = link_to t('views.shared.cancel'), account_path, class: 'link'

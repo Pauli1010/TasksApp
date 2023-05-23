@@ -18,4 +18,10 @@ class User < ApplicationRecord
   def activation_state_pending?
     activation_state == 'pending'
   end
+
+  # Public method returning data for Avatar
+  def initials
+    # "#{first_name.first}#{last_name.first}"
+    user_name&.first.presence || email.first
+  end
 end

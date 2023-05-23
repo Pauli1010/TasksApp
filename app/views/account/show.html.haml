@@ -1,1 +1,33 @@
-%h1= t('.title')
+.div.mt-3
+  .row
+    .col-sm-1
+    .col-sm-10
+      .card.mb-5
+        .card-header.bigger
+          = user_avatar(current_user)
+          = t('.title')
+          .tools-box.pull-right
+            = link_to edit_account_path, class: 'btn btn-sm btn-primary' do
+              = bootstrap_icon("pencil")
+              = t('.edit')
+            = link_to '', class: 'btn btn-sm btn-primary' do
+              = bootstrap_icon("pencil")
+              = t('.edit_password')
+        %dd.card-body
+          .row
+            .col-sm-6
+              .row.fixed-medium-height
+                %dt.col-sm-5.strong= t('activemodel.attributes.user.user_name')
+                %dd.col-sm-7{ class: "#{ 'text-gray' if current_user.user_name.blank? }" }= current_user.user_name.presence || t('views.shared.no_data')
+              .row.fixed-medium-height
+                %dt.col-sm-5.strong= t('activemodel.attributes.user.email')
+                %dd.col-sm-7= current_user.email
+              .row.fixed-medium-height
+                %dt.col-sm-5.strong= t('activemodel.attributes.user.created_at')
+                %dd.col-sm-7
+                  = l(current_user.created_at, format: :date_and_time)
+              .row.fixed-medium-height
+                %dt.col-sm-5.strong= t('activemodel.attributes.user.updated_at')
+                %dd.col-sm-7
+                  = l(current_user.updated_at, format: :date_and_time)
+    .col-sm-1
