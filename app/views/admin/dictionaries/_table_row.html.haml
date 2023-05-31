@@ -1,0 +1,15 @@
+%tr
+  %th{ scope: 'row' }= ln(i)
+  %td= link_to item.name, admin_dictionary_path(item)
+  %td.small
+    - if item.dictionary_items.any?
+      %ul
+        - item.dictionary_items.each do |dictionary_item|
+          %li
+            = dictionary_item.name
+            = link_to_edit(dictionary_item, 'dictionary_items')
+            = link_to_delete(dictionary_item, 'dictionary_items')
+  %td.text-right
+    = link_to_new({ dictionary_id: item.id }, 'dictionary_items')
+    = link_to_edit(item)
+    = link_to_delete(item)

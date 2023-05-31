@@ -1,23 +1,11 @@
 pl:
-  activerecord:
-    attributes:
-      task:
-        headers:
-          due_time: Deadline
-          done_time: Wykonano
-          done: Zrobiono
-          highlited: Wyróżnione
-          note: Notatka
-          title: Nazwa zadania
   activemodel:
     attributes:
-      task:
-        due_time: Do kiedy
-        done_time: Wykonano
-        done: Zrobiono
-        highlited: Wyróżnione
-        note: Notatka
-        title: Nazwa
+      dictionary:
+        name: Nazwa
+      dictionary_item:
+        name: Nazwa
+        dictionary_id: Słownik
       user:
         created_at: Data rejestracji
         email: E-mail
@@ -26,6 +14,27 @@ pl:
         remember_me: Zapamiętaj mnie
         updated_at: Data aktualizacji danych
         user_name: Nazwa użytkownika
+      task:
+        due_time: Do kiedy
+        done_time: Wykonano
+        done: Zrobiono
+        highlited: Wyróżnione
+        note: Notatka
+        title: Nazwa
+  activerecord:
+    attributes:
+      dictionary:
+        headers:
+          dictionary_items: Elementy słownika
+          name: Nazwa
+      task:
+        headers:
+          due_time: Deadline
+          done_time: Wykonano
+          done: Zrobiono
+          highlited: Wyróżnione
+          note: Notatka
+          title: Nazwa zadania
   account:
     edit:
       title: Edytuj swoje dane
@@ -40,6 +49,40 @@ pl:
     update_password:
       error: Nie udało sie zaktualizować hasła.
       success: Zaktualizowano hasło.
+  admin:
+    dictionaries:
+      create:
+        error: Nie udało się dodać słownika
+        success: Dodano słownik
+      destroy:
+        error: Nie udało się usunąć słownika
+        success: Usunięto słownik
+      edit:
+        title: Edytuj słownik
+      index:
+        new: Dodaj słownik
+        title: Lista słowników
+      new:
+        title: Nowy słownik
+      show:
+        no_item: Nie znaleziono słownika
+      update:
+        error: Nie udało się zaktualizować słownika
+        success: Zaktualizowano słownik
+    dictionary_items:
+      create:
+        error: Nie udało się dodać elementu słownika
+        success: Dodano element słownika
+      destroy:
+        error: Nie udało się usunąć elementu słownika
+        success: Usunięto element słownika
+      edit:
+        title: Edytuj element słownika
+      show:
+        no_item: Nie znaleziono elementu słownika
+      update:
+        error: Nie udało się zaktualizować elementu słownika
+        success: Zaktualizowano element słownika
   application:
     header:
       tasks: Zadania
@@ -61,7 +104,8 @@ pl:
       required: E-mail jest wymagany
       taken: E-mail został już zajęty
   flash_messages:
-    login_required: Musisz sie zalogować, zeby kontunować.
+    login_required: Musisz sie zalogować, żeby kontunować.
+    admin_required: Brak uprawnień
   helpers:
     confirm: Czy jesteś pewien?
     order:
@@ -150,6 +194,9 @@ pl:
       date_and_time: "%d-%m-%Y %H:%M"
   views:
     shared:
+      add_new:
+        dictionary_item: Dodaj nowy element słownika
+      back_to_list: Powrót do listy
       change_status_to:
         added: Przywróć
         done: Zamknij

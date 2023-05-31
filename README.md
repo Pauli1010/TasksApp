@@ -37,6 +37,7 @@ For running one test run: `rspec <path_to_file>:<line_number>`
 This template project holds some elements, that need to be changed or removed, based on the needs. 
 Below is the list of files or methods that need to be reviewed for that purpose:
 - app/assets/stylesheets/spare_css.scss - File with additional styles
+- app/controllers/application_controler.rb - For projects with public access, the `before_action :require_login` may need to be moved
 - app/mailers/user_mailer.rb#activation_success_email(user) - Currently unused method
 - config/locales/mailers.pl.yml - Translations used in mailers. In case of using second party app for sending emails, this file may be changed or deleted.
 

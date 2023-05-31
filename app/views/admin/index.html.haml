@@ -1,0 +1,18 @@
+.div.mt-3
+  .row
+    %h2.default-header
+      = t('title', scope: "admin.#{controller_name.pluralize}.index")
+      %small (#{items.count})
+      .pull-right
+        .btn-group
+          = link_to t('new', scope: "admin.#{controller_name.pluralize}.index"), [:new, :admin, controller_name.singularize.to_sym], class: 'btn btn-primary'
+
+  .row
+    .table-responsive-md
+      %table.table.table-bordered.table-hover.table-sm.table-striped
+        %thead.thead-dark.thead-fixed
+          %tr
+            = render "admin/#{controller_name.pluralize}/table_headers"
+        %tbody
+          - items.each_with_index do |item, i|
+            = render "admin/#{controller_name.pluralize}/table_row", item: item, i: i

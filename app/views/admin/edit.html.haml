@@ -1,0 +1,9 @@
+.div.mt-3
+  .row
+    .col-sm-1
+    .col-sm-10
+      .card
+        .card-header.bigger= t('title', scope: "admin.#{controller_name.pluralize}.edit")
+        .card-body
+          = render "admin/#{controller_name.pluralize}/form", action_url: [:admin, controller_name.singularize.to_sym], method: :patch
+    .col-sm-2

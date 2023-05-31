@@ -1,0 +1,11 @@
+.div.mt-3
+  .row
+    .col-sm-1
+    .col-sm-10
+      .card
+        .card-header.bigger
+          = item.name
+          .pull-right= link_to t('views.shared.back_to_list'), [:admin, controller_name.to_sym], class: 'link'
+        .card-body
+          = render "admin/#{controller_name}/details", item: item
+    .col-sm-2

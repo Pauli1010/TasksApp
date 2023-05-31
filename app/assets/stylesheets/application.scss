@@ -7,13 +7,14 @@
 body.login-bg { background-color: #f5f5f5; }
 .bg-light-darker { background-color: #f5f5f5; }
 
-h2.default-header { padding: 20px 10px; }
+h2.default-header { display: block; padding: 20px 10px; width: 100%; }
 h2.login-header { padding: 20px 0px; text-align: center; }
 .dropdown.drop-to-right .dropdown-menu { left: unset; right: 0; }
 .bootstrap-select .dropdown-menu.show { max-width: 100%; } // fix
 
 .container-fluid.pt { padding-top: 20px; margin-bottom: 30px; }
 .pull-right { float: right; }
+.pull-left { float: left; }
 .strong { font-weight: bold; }
 .hidden { display: none; }
 .nav-index-list {
@@ -36,7 +37,16 @@ ul {
   padding-left: 0;
 }
 
-// form
+// table
+.table-responsive-md {
+  width: 100%;
+}
+
+.thead-dark .sort-table {
+  color: #fff;
+}
+
+  // form
 .simple_form.customized {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;

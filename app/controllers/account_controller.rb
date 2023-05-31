@@ -5,7 +5,7 @@ class AccountController < ApplicationController
   def show; end
 
   def edit
-    @form = AccountForm.new
+    @form = AccountForm.from_model(current_user)
   end
 
   def update

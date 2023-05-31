@@ -43,6 +43,13 @@ module ApplicationHelper
      t(time.future? ? 'time_left' : 'past_time', scope: 'helpers', time: distance_of_time_in_words(time, Date.current))
   end
 
+  def link_to_new(params = {}, controller = nil)
+    controller = controller.presence || controller_name
+    link_to({ controller: controller, action: :new }.merge(params), title: t("views.shared.add_new.#{controller.singularize}"), class: 'btn btn-xs btn-success') do
+      bootstrap_icon 'plus', width: 12, height: 12, fill: '#ffffff'
+    end
+  end
+
   def link_to_edit(item, controller = nil)
     controller = controller.presence || controller_name
     link_to({ controller: controller, action: :edit, id: item.id }, title: t('views.shared.edit'), class: 'btn btn-xs btn-info') do

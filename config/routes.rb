@@ -28,4 +28,9 @@ Rails.application.routes.draw do
       patch :change_status
     end
   end
+
+  namespace :admin do
+    resources :dictionaries
+    resources :dictionary_items
+  end
 end
