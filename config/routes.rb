@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "account#show"
+  root 'account#show'
 
   get     'login'   => 'sessions#new',      :as => :login
   post    'login'   => 'sessions#create'

@@ -8,9 +8,7 @@ FactoryBot.define do
     password_confirmation { @pass }
     activation_state { 'active' }
 
-    after(:create) do |user|
-      user.activate!
-    end
+    after(:create, &:activate!)
 
     trait :admin do
       admin { true }
@@ -28,7 +26,7 @@ FactoryBot.define do
 
     trait :with_items do
       transient do
-        item_count {2}
+        item_count { 2 }
       end
 
       after(:create) do |dictionary, evaluator|

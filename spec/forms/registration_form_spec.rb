@@ -5,6 +5,7 @@ RSpec.describe RegistrationForm, type: :form do
   let(:email) { Faker::Internet.email }
   let(:pass) { Faker::Internet.password }
   let(:pass_conf) { pass }
+  let(:pass_conf_tr_scope) { 'errors.password_confirmation' }
 
   let(:user) { create(:user) }
 

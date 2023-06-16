@@ -1,0 +1,52 @@
+AllCops:
+  Exclude:
+    - 'bin/setup'
+    - 'bin/**'
+    - 'bin/*.rb'
+    - 'config/**'
+    - 'config/**/*.rb'
+    - 'db/migrate/*.rb'
+    - 'db/schema.rb'
+    - 'test/**/*.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - 'config.ru'
+Layout/ExtraSpacing:
+  Exclude:
+    - 'config/routes.rb'
+Layout/LineLength:
+  # To be enabled for refactoring
+  Enabled: false
+  Exclude:
+    - 'app/models/user.rb'
+    - 'spec/**/*.rb'
+Layout/TrailingEmptyLines:
+  Enabled: false
+Lint/MissingSuper:
+  Enabled: false
+Metrics/AbcSize:
+  # To be enabled for refactoring
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+Metrics/MethodLength:
+  # To be enabled for refactoring
+  Enabled: false
+Metrics/ModuleLength:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+Style/Documentation:
+  # To be enabled when documentation is added
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/SymbolArray:
+  # To be enabled for refactoring
+  Enabled: false
+  Exclude:
+    - 'config/routes.rb'

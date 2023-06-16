@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   def new
     redirect_to(root_path, notice: t('already_logged_in', scope: 'registrations.new')) and return if current_user
   end
+
   def create
     redirect_to(root_path, notice: t('already_logged_in', scope: 'registrations.new')) and return if current_user
 

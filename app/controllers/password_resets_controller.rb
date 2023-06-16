@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 # PasswordResetsController provides logic for resetting password
@@ -11,18 +10,17 @@ class PasswordResetsController < ApplicationController
 
     @form = ResetPasswordForm.new
   end
+
   def create
     redirect_to(account_path, notice: t('already_logged_in', scope: 'password_resets.new')) and return if current_user
-    @form = ResetPasswordForm.from_params(params)
 
+    @form = ResetPasswordForm.from_params(params)
     ResetPassword.call(@form) do
-      on(:ok) {
-        redirect_to(login_path, notice: t('success', scope: 'password_resets.create'))
-      }
-      on(:invalid) {
+      on(:ok) { redirect_to(login_path, notice: t('success', scope: 'password_resets.create')) }
+      on(:invalid) do
         flash.now[:alert] = t('error', scope: 'password_resets.create')
         render :new
-      }
+      end
     end
   end
 
@@ -47,13 +45,11 @@ class PasswordResetsController < ApplicationController
 
     @form = ChangePasswordForm.from_params(params)
     ChangePassword.call(@form, @user) do
-      on(:ok) {
-        redirect_to(login_path, notice: t('success', scope: 'password_resets.update'))
-      }
-      on(:invalid) {
+      on(:ok) { redirect_to(login_path, notice: t('success', scope: 'password_resets.update')) }
+      on(:invalid) do
         flash.now[:alert] = t('error', scope: 'password_resets.update')
         render :edit
-      }
+      end
     end
   end
 

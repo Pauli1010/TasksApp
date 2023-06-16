@@ -1,34 +1,36 @@
 # frozen_string_literal: true
 
-class Admin::CreateItem < Rectify::Command
-  def initialize(form, user)
-    @form = form
-    @user = user
-  end
-
-  def call
-    return broadcast(:invalid) if form.invalid?
-
-    transaction do
-      create_item
+module Admin
+  class CreateItem < Rectify::Command
+    def initialize(form, user)
+      @form = form
+      @user = user
     end
 
-    broadcast(:ok, item)
-  end
+    def call
+      return broadcast(:invalid) if form.invalid?
 
-  private
+      transaction do
+        create_item
+      end
 
-  attr_reader :form, :user, :item
+      broadcast(:ok, item)
+    end
 
-  def create_item
-    @item = item_class.create(item_attributes)
-  end
+    private
 
-  def item_attributes
-    raise NotImplementedError
-  end
+    attr_reader :form, :user, :item
 
-  def item_class
-    raise NotImplementedError
+    def create_item
+      @item = item_class.create(item_attributes)
+    end
+
+    def item_attributes
+      raise NotImplementedError
+    end
+
+    def item_class
+      raise NotImplementedError
+    end
   end
 end

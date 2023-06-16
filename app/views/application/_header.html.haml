@@ -7,18 +7,18 @@
     #mainMenu.collapse.navbar-collapse
       %ul.navbar-nav.mr-auto
         %li.nav-item
-          = link_to t('.asset'), '', class: "#{menu_active?('tasks')} nav-item nav-link"
+          = link_to t('.asset'), '', class: "#{menu_is_active('tasks')} nav-item nav-link"
 
         -#%li.nav-item.dropdown
-          = link_to '', '', class: "#{menu_active?('tasks')} nav-item nav-link"
+          = link_to '', '', class: "#{menu_is_active('tasks')} nav-item nav-link"
           %div.dropdown-menu
-            = link_to '', '', class: "#{menu_active?('tasks')} nav-item nav-link"
+            = link_to '', '', class: "#{menu_is_active('tasks')} nav-item nav-link"
 
       %ul.navbar-nav.navbar-right
         %li.nav-item.dropdown.show.drop-to-right
           = link_to user_avatar(current_user), account_path, class: 'nav-link pb-0', id: 'user-dropdown-menu-link', role: 'button', data: { toggle: "dropdown" }, aria: { haspopup: true, expanded: false }
           %div.dropdown-menu{ aria: { labelledby: 'user-dropdown-menu-link' }}
-            = link_to t('account.show.title'), account_path, class: "#{menu_active?('account')} dropdown-item"
+            = link_to t('account.show.title'), account_path, class: "#{menu_is_active('account')} dropdown-item"
         %li.nav-item
           = link_to logout_path, class: 'nav-link' do
             = bootstrap_icon 'door-open', width: 20, height: 20

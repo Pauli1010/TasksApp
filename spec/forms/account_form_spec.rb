@@ -16,7 +16,6 @@ RSpec.describe AccountForm, type: :form do
     it { is_expected.to be_valid }
   end
 
-
   describe 'with too short user_name' do
     let(:user_name) { 'a' }
 

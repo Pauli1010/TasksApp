@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-class Admin::DictionaryForm < Rectify::Form
-  mimic :dictionary
+module Admin
+  class DictionaryForm < Rectify::Form
+    mimic :dictionary
 
-  attribute :name
+    attribute :name
 
-  validates :name, presence: true
+    validates :name, presence: true
+  end
 end

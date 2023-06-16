@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UserMailer < ApplicationMailer
-
   def activation_needed_email(user)
     @user = user
     @activation_url = activate_registration_url(@user.activation_token)

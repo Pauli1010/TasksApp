@@ -1,26 +1,28 @@
 # frozen_string_literal: true
 
-class Admin::DictionaryItemForm < Rectify::Form
-  mimic :dictionary_item
+module Admin
+  class DictionaryItemForm < Rectify::Form
+    mimic :dictionary_item
 
-  attribute :name
-  attribute :dictionary_id
+    attribute :name
+    attribute :dictionary_id
 
-  validates :name, presence: true
-  validates :dictionary_id, presence: true
-  validate :dictionary_exists
+    validates :name, presence: true
+    validates :dictionary_id, presence: true
+    validate :dictionary_exists
 
-  def dictionary_exists
-    return unless dictionary_id
+    def dictionary_exists
+      return unless dictionary_id
 
-    errors.add(:dictionary_id, 'dictionary_not_found') unless dictionary
-  end
+      errors.add(:dictionary_id, 'dictionary_not_found') unless dictionary
+    end
 
-  def dictionary
-    Dictionary.find_by(id: dictionary_id)
-  end
+    def dictionary
+      Dictionary.find_by(id: dictionary_id)
+    end
 
-  def dictionaries
-    Dictionary.all
+    def dictionaries
+      Dictionary.all
+    end
   end
 end

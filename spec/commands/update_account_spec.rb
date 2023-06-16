@@ -37,5 +37,4 @@ RSpec.describe UpdateAccount do
       expect(user.user_name).not_to eq user_name
     end
   end
-
 end

@@ -1,27 +1,29 @@
 # frozen_string_literal: true
 
-class Admin::DestroyItem < Rectify::Command
-  def initialize(form, item, user)
-    @form = form
-    @item = item
-    @user = user
-  end
-
-  def call
-    return broadcast(:invalid) unless item.destroyable?
-
-    transaction do
-      destroy_item
+module Admin
+  class DestroyItem < Rectify::Command
+    def initialize(form, item, user)
+      @form = form
+      @item = item
+      @user = user
     end
 
-    broadcast(:ok)
-  end
+    def call
+      return broadcast(:invalid) unless item.destroyable?
 
-  private
+      transaction do
+        destroy_item
+      end
 
-  attr_reader :form, :user, :item
+      broadcast(:ok)
+    end
 
-  def destroy_item
-    item.destroy
+    private
+
+    attr_reader :form, :user, :item
+
+    def destroy_item
+      item.destroy
+    end
   end
 end

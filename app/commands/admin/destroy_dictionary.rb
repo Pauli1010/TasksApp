@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::DestroyDictionary < Admin::DestroyItem
+module Admin
+  class DestroyDictionary < Admin::DestroyItem
+  end
 end

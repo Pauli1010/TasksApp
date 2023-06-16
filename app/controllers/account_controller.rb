@@ -12,13 +12,11 @@ class AccountController < ApplicationController
     @form = AccountForm.from_params(params)
 
     UpdateAccount.call(@form, current_user) do
-      on(:ok) {
-        redirect_to(account_path, notice: t('success', scope: 'account.update'))
-      }
-      on(:invalid) {
+      on(:ok) { redirect_to(account_path, notice: t('success', scope: 'account.update')) }
+      on(:invalid) do
         flash.now[:alert] = t('error', scope: 'account.update')
         render :edit
-      }
+      end
     end
   end
 
@@ -29,13 +27,11 @@ class AccountController < ApplicationController
   def update_password
     @form = ChangePasswordForm.from_params(params)
     ChangePassword.call(@form, current_user) do
-      on(:ok) {
-        redirect_to(account_path, notice: t('success', scope: 'account.update_password'))
-      }
-      on(:invalid) {
+      on(:ok) { redirect_to(account_path, notice: t('success', scope: 'account.update_password')) }
+      on(:invalid) do
         flash.now[:alert] = t('error', scope: 'account.update_password')
         render :edit_password
-      }
+      end
     end
   end
 end

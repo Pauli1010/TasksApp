@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-class Admin::UpdateDictionary < Admin::UpdateItem
+module Admin
+  class UpdateDictionary < Admin::UpdateItem
+    private
 
-  private
-
-  def item_attributes
-    {
-      name: form.name
-    }
+    def item_attributes
+      {
+        name: form.name
+      }
+    end
   end
 end
