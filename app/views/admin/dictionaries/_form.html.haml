@@ -1,0 +1,7 @@
+= simple_form_for @form, url: action_url, html: { method: method, class: '', data: { turbo: "false" } } do |f|
+  = f.input :name
+
+  .row.mt-sm
+    .col-sm-12.text-center
+      = f.button :submit, t('views.shared.save'), class: 'btn-sm btn-info text-center'
+      = link_to t('views.shared.cancel'), admin_dictionaries_path

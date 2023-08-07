@@ -23,4 +23,3 @@ development:
 test:
   <<: *default
   database: tasks_app_test
-

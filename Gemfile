@@ -29,9 +29,9 @@ gem "jbuilder"
 
 gem 'sorcery'
 
-# gem 'sass-rails', '>= 6'
 gem 'rails-i18n', '~> 7.0.0'
 gem "jquery-rails"
+# gem 'sass-rails', '>= 6'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'haml-rails'
 gem "rectify"
@@ -65,16 +65,19 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails"
+  gem "rails-controller-testing"
   gem "factory_bot_rails"
   gem "faker"
+  gem 'wisper-rspec', '~> 1.1'
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
+  gem 'letter_opener'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
+  gem 'rubocop', require: false
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

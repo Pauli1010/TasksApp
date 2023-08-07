@@ -1,0 +1,19 @@
+%h2.text-center.h3.mb-3.font-weight-normal= t('.title')
+= render 'application/flash'
+
+= simple_form_for @form, url: password_reset_path(@token), method: :patch, scope: :user, class: 'simple_form form-horizontal', data: { turbo: "false" } do |f|
+  %fieldset
+    %legend.text-center.mb-4= t('.legend')
+
+    = render 'password_fields', f: f
+
+    .actions.text-center
+      = f.submit t(".reset"), class: 'btn-sm btn-primary btn-max-width'
+
+%ul.text-center.mb-4.font-weight-normal
+  %li
+    = t('login_to_your_account', scope: 'registrations.new')
+    = link_to t('login', scope: 'registrations.new'), login_path
+  %li
+    = t('register_account', scope: 'sessions.new')
+    = link_to t('register', scope: 'sessions.new'), new_registration_path

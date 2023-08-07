@@ -1,13 +1,30 @@
+# frozen_string_literal: true
+
 class UserMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.reset_password_email.subject
-  #
-  def reset_password_email
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def activation_needed_email(user)
+    @user = user
+    @activation_url = activate_registration_url(@user.activation_token)
+    mail(to: user.email, subject: t('user_mailer.activation_needed_email.subject', app_name: app_name))
   end
+
+  def reset_password_email(user)
+    @user = user
+    @reset_password_url = edit_password_reset_url(@user.reset_password_token)
+
+    mail to: user.email, subject: t('user_mailer.reset_password_email.subject', app_name: app_name)
+  end
+
+  def send_unlock_token_email(user)
+    @user = user
+    @unlocking_url = unlock_password_reset_url(@user.unlock_token)
+    mail(to: user.email, subject: t('user_mailer.send_unlock_token_email.subject', app_name: app_name))
+  end
+
+  # Email is disabled in Sorcery initializer:
+  #   user.activation_success_email_method_name = nil
+  #   Needs to be enabled or removed in final project
+  # def activation_success_email(user)
+  #   @user = user
+  #   mail(to: user.email, subject: "Your account is now activated")
+  # end
 end

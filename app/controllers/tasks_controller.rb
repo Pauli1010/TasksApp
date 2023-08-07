@@ -53,12 +53,10 @@ class TasksController < ApplicationController
 
   def tasks
     # TODO: ordering via note takes note value instead may need refactoring
-    @tasks ||= begin
-                 if params[:sort_by].present?
-                   current_user.tasks.order(params[:sort_by] => params[:ord])
-                 else
-                   current_user.tasks
-                 end
+    @tasks ||= if params[:sort_by].present?
+                 current_user.tasks.order(params[:sort_by] => params[:ord])
+               else
+                 current_user.tasks
                end
   end
 

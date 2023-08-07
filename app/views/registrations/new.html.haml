@@ -1,0 +1,12 @@
+%h2.text-center.h3.mb-3.font-weight-normal= t('.title')
+= render 'application/flash'
+
+= render 'form'
+
+%ul.text-center.mb-4.font-weight-normal
+  %li
+    = t('.login_to_your_account')
+    = link_to t('.login'), login_path
+  %li
+    = t('.forgot_password')
+    = link_to t('.reset_password'), new_password_reset_path

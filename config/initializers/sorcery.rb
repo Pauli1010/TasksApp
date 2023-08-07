@@ -4,7 +4,7 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = [:remember_me, :reset_password]
+Rails.application.config.sorcery.submodules = [:remember_me, :reset_password, :user_activation, :brute_force_protection]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -351,8 +351,8 @@ Rails.application.config.sorcery.configure do |config|
     # REQUIRED:
     # User activation mailer class.
     # Default: `nil`
-    #
-    # user.user_activation_mailer =
+
+    user.user_activation_mailer = UserMailer
 
     # When true, sorcery will not automatically
     # send the activation details email, and allow you to
@@ -374,8 +374,8 @@ Rails.application.config.sorcery.configure do |config|
 
     # Activation success email method on your mailer class.
     # Default: `:activation_success_email`
-    #
-    # user.activation_success_email_method_name =
+
+    user.activation_success_email_method_name = nil
 
     # Do you want to prevent users who did not activate by email from logging in?
     # Default: `true`
@@ -488,8 +488,8 @@ Rails.application.config.sorcery.configure do |config|
 
     # How many failed logins are allowed.
     # Default: `50`
-    #
-    # user.consecutive_login_retries_amount_limit =
+
+    user.consecutive_login_retries_amount_limit = 10
 
     # How long the user should be banned, in seconds. 0 for permanent.
     # Default: `60 * 60`
@@ -515,8 +515,8 @@ Rails.application.config.sorcery.configure do |config|
     # REQUIRED:
     # Unlock token mailer class.
     # Default: `nil`
-    #
-    # user.unlock_token_mailer =
+
+    user.unlock_token_mailer = UserMailer
 
     # -- activity logging --
     # Last login attribute name.

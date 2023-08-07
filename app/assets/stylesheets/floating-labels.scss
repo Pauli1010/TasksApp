@@ -6,7 +6,6 @@
 .form-label-group input,
 .form-label-group label {
   height: 3.125rem;
-  width: 100%;
   padding: .75rem;
 }
 
@@ -15,6 +14,7 @@
   top: 0;
   left: 0;
   display: block;
+  width: 100%;
   margin-bottom: 0; /* Override default `<label>` margin */
   line-height: 1.5;
   color: #495057;
@@ -23,6 +23,17 @@
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
+
+  &.checkbox-label {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: 20px;
+    padding: 0 10px !important;
+    font-size: 13px !important;
+    color: #495057 !important;
+    vertical-align: top;
+  }
 }
 
 .form-label-group input::-webkit-input-placeholder {
@@ -56,7 +67,7 @@
 }
 
 .form-label-group input:not(:placeholder-shown) {
-  padding-top: 1.25rem;
+  padding-top: 1rem;
   padding-bottom: .25rem;
 }
 

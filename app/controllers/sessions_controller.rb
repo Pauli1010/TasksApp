@@ -5,19 +5,25 @@ class SessionsController < ApplicationController
   layout 'login'
   skip_before_action :require_login, only: [:new, :create]
 
-  def create
-    @user = login(params[:email], params[:password])
+  def new
+    redirect_to(root_path, notice: t('already_logged_in', scope: 'registrations.new')) and return if current_user
+  end
 
-    if @user
-      redirect_to(account_path, notice: t('success', scope: 'session.create'))
+  def create
+    redirect_to(root_path, notice: t('already_logged_in', scope: 'registrations.new')) and return if current_user
+
+    @user = User.find_by(email: params[:email])
+    if @user&.activation_state_pending?
+      redirect_to(root_path, notice: t('cannot_login', scope: 'sessions.create'))
+    elsif login(params[:email], params[:password], params[:remember_me])
+      redirect_to(account_path, notice: t('success', scope: 'sessions.create'))
     else
-      flash.now[:alert] = t('error', scope: 'session.create')
-      render action: 'new'
+      redirect_to(login_path, alert: t('error', scope: 'sessions.create'))
     end
   end
 
   def destroy
     logout
-    redirect_to(login_path, notice: t('success', scope: 'session.destroy'))
+    redirect_to(login_path, notice: t('success', scope: 'sessions.destroy'))
   end
 end

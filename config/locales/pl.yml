@@ -1,16 +1,11 @@
 pl:
-  activerecord:
-    attributes:
-      task:
-        headers:
-          due_time: Deadline
-          done_time: Wykonano
-          done: Zrobiono
-          highlited: Wyróżnione
-          note: Notatka
-          title: Nazwa zadania
   activemodel:
     attributes:
+      dictionary:
+        name: Nazwa
+      dictionary_item:
+        name: Nazwa
+        dictionary_id: Słownik
       task:
         due_time: Do kiedy
         done_time: Wykonano
@@ -19,31 +14,92 @@ pl:
         note: Notatka
         title: Nazwa
       user:
+        created_at: Data rejestracji
         email: E-mail
         password: Hasło
         password_confirmation: Powtórz hasło
+        remember_me: Zapamiętaj mnie
+        updated_at: Data aktualizacji danych
+        user_name: Nazwa użytkownika
+  activerecord:
+    attributes:
+      dictionary:
+        headers:
+          dictionary_items: Elementy słownika
+          name: Nazwa
+      task:
+        headers:
+          due_time: Deadline
+          done_time: Wykonano
+          done: Zrobiono
+          highlited: Wyróżnione
+          note: Notatka
+          title: Nazwa zadania
   account:
+    edit:
+      title: Edytuj swoje dane
+    edit_password:
+      title: Zaktualizuj hasło
     show:
+      edit_password: Edytuj hasło
       title: Moje konto
+    update:
+      error: Nie udało sie zaktualizować danych.
+      success: Zaktualizowano dane.
+    update_password:
+      error: Nie udało sie zaktualizować hasła.
+      success: Zaktualizowano hasło.
+  admin:
+    dictionaries:
+      create:
+        error: Nie udało się dodać słownika
+        success: Dodano słownik
+      destroy:
+        error: Nie udało się usunąć słownika
+        success: Usunięto słownik
+      edit:
+        title: Edytuj słownik
+      index:
+        new: Dodaj słownik
+        title: Lista słowników
+      new:
+        title: Nowy słownik
+      show:
+        no_item: Nie znaleziono słownika
+      update:
+        error: Nie udało się zaktualizować słownika
+        success: Zaktualizowano słownik
+    dictionary_items:
+      create:
+        error: Nie udało się dodać elementu słownika
+        success: Dodano element słownika
+      destroy:
+        error: Nie udało się usunąć elementu słownika
+        success: Usunięto element słownika
+      edit:
+        title: Edytuj element słownika
+      show:
+        no_item: Nie znaleziono elementu słownika
+      update:
+        error: Nie udało się zaktualizować elementu słownika
+        success: Zaktualizowano element słownika
   application:
-    header:
-      tasks: Zadania
     flash:
       close: Zamknij
-  booleans:
-    question:
-      true: Tak
-      false: Nie
   errors:
     password:
       required: Hasło jest wymagane
+      too_short: Hasło jest za krótkie (musi mieć przynajmniej 3 znaki)
     password_confirmation:
       different: Hasła się różnią
       required: Powtórzenie hasła jest wymagane
     email:
+      invalid: E-mail jest nieprawidłowy
+      required: E-mail jest wymagany
       taken: E-mail został już zajęty
-    due_time:
-      must_be_in_the_future: Musi być w przyszłości
+  flash_messages:
+    login_required: Musisz sie zalogować, żeby kontunować.
+    admin_required: Brak uprawnień
   helpers:
     confirm: Czy jesteś pewien?
     order:
@@ -51,32 +107,60 @@ pl:
       desc: Sortuj malejąco
     time_left: 'Pozostało: %{time}'
     past_time: 'Po czasie: %{time}'
-  sessions:
+  password_resets:
+    unlock:
+      error: Nie udało sie odblokować konta.
+      logged_in_user: Rządana akcja jest niedostępna dla zalogowanego użytkownika.
+      success: Odblokowano konto.
+    create:
+      error: Nie udało się wysłać maila z linkiem do resetu hasła. Spróbuj ponownie.
+      success: Link do resetu hasła został wysłany na Twój adres e-mail.
+    edit:
+      legend: Wpisz nowe hasło, którym bedziesz mógł logować się do portalu.
+      reset: Resetuj hasło
+      title: Resetuj hasło
+      wrong_token: Nie odnaleziono rządania.
     new:
-      register_account: Nie masz konta?
-      register: Zarejestruj się
-      title: Logowanie
-    form:
-      legend: Zaloguj się do systemu zarządzania zadaniami
-      login: Zaloguj się
-  registration:
+      already_logged_in: Żeby zmienić hasło będąc zalogowanym, musisz podać obecne hasło.
+      legend: Podaj adres e-mail, którym rejestrowałeś sie w portalu, żeby otrzymać instrukcję resetu hasła.
+      reset: Wyślij instrukcję
+      title: Resetuj hasło
+    update:
+      error: Nie udało się zaktualizować hasła. Spróbuj ponownie.
+      success: Zaktualizowano hasło. Zaloguj się do serwisu nowymi danymi.
+  registrations:
+    activate:
+      error: Nie udało się aktywowań konta. Sprawdź, czy link jest prawidłowy.
+      success: Aktywowano konto. Zaloguj się, by kontynuować.
     create:
       error: Nie udało się zarejestrować na platformie
       success: Dziękujemy za rejestrację
-  registrations:
     new:
+      already_logged_in: Jesteś już zalogowany
+      forgot_password: Zapomniałeś hasła?
       login: Zaloguj się
       login_to_your_account: Masz juz konto?
+      reset_password: Resetuj hasło
       title: Rejestracja
     form:
       legend: Zarejestruj się w systemie zarządzania zadaniami
       register: Zarejestruj się
-  session:
+  sessions:
     create:
+      cannot_login: Konto nie jest aktywne
       error: Nie udało się zalogować
       success: Zalogowano
     destroy:
       success: Wylogowano z systemu
+    new:
+      forgot_password: Zapomniałeś hasła?
+      register_account: Nie masz konta?
+      register: Zarejestruj się
+      reset_password: Resetuj hasło
+      title: Logowanie
+    form:
+      legend: Zaloguj się do systemu
+      login: Zaloguj się
   tasks:
     create:
       error: Nie udało sie utworzyć zadania
@@ -98,8 +182,14 @@ pl:
     update:
       error: Nie udało sie zaktualizować zadania
       success: Zaktualizowano zadanie
+  time:
+    formats:
+      date_and_time: "%d-%m-%Y %H:%M"
   views:
     shared:
+      add_new:
+        dictionary_item: Dodaj nowy element słownika
+      back_to_list: Powrót do listy
       change_status_to:
         added: Przywróć
         done: Zamknij
