@@ -20,7 +20,7 @@ RSpec.describe RegisterUser do
     end
 
     it 'call creates user' do
-      expect { subject.call }.to change(User, :count).by(1)
+      expect { subject.call }.to change { User.count }.by(1)
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe RegisterUser do
     end
 
     it 'call does not create user' do
-      expect { subject.call }.not_to change(User, :count)
+      expect { subject.call }.not_to change { User.count }
     end
   end
 end

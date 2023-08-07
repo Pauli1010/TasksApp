@@ -48,7 +48,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       it 'redirects to account' do
         expect do
           post :create, params: { email: user.email }
-        end.not_to change(ActionMailer::Base.deliveries, :length)
+        end.not_to change { ActionMailer::Base.deliveries.length }
 
         expect(response).to redirect_to(account_path)
         expect(flash[:notice]).to eq(I18n.t('password_resets.new.already_logged_in'))
@@ -68,7 +68,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       it 'redirects to account' do
         expect do
           patch :update, params: { id: resetting_user.reset_password_token }
-        end.not_to change(User.where(reset_password_token: nil).count)
+        end.not_to change { User.where(reset_password_token: nil).count }
 
         expect(response).to redirect_to(account_path)
         expect(flash[:notice]).to eq(I18n.t('password_resets.new.already_logged_in'))
@@ -81,8 +81,8 @@ RSpec.describe PasswordResetsController, type: :controller do
       expect do
         expect do
           post :create, params: { email: user.email }
-        end.to change(ActionMailer::Base.deliveries, :length).by(1)
-      end.to change(User.where(reset_password_token: nil).count).by(-1)
+        end.to change { ActionMailer::Base.deliveries.length }.by(1)
+      end.to change { User.where(reset_password_token: nil).count }.by(-1)
 
       expect(flash[:notice]).to eq(I18n.t('password_resets.create.success'))
       expect(response).to redirect_to(login_path)
@@ -94,8 +94,8 @@ RSpec.describe PasswordResetsController, type: :controller do
       expect do
         expect do
           post :create, params: { email: Faker::Internet.email }
-        end.not_to change(ActionMailer::Base.deliveries, :length)
-      end.not_to change(User.where(reset_password_token: nil).count)
+        end.not_to change { ActionMailer::Base.deliveries.length }
+      end.not_to change { User.where(reset_password_token: nil).count }
 
       expect(flash[:alert]).to eq(I18n.t('password_resets.create.error'))
       expect(response.status).to eq(200)
@@ -123,7 +123,7 @@ RSpec.describe PasswordResetsController, type: :controller do
                   password_confirmation: pass
                 }
               }
-      end.not_to change(User.where(reset_password_token: nil).count)
+      end.not_to change { User.where(reset_password_token: nil).count }
 
       expect(response).to redirect_to(edit_password_reset_path)
       expect(flash[:alert]).to eq(I18n.t('password_resets.edit.wrong_token'))
@@ -143,7 +143,7 @@ RSpec.describe PasswordResetsController, type: :controller do
                   password_confirmation: "#{pass}123"
                 }
               }
-      end.not_to change(User.where(reset_password_token: nil).count)
+      end.not_to change { User.where(reset_password_token: nil).count }
 
       expect(response).to have_http_status(200)
       expect(flash[:alert]).to eq(I18n.t('password_resets.update.error'))
@@ -163,7 +163,7 @@ RSpec.describe PasswordResetsController, type: :controller do
                   password_confirmation: pass
                 }
               }
-      end.to change(User.where(reset_password_token: nil).count).by(1)
+      end.to change { User.where(reset_password_token: nil).count }.by(1)
 
       expect(response).to redirect_to(login_path)
       expect(flash[:notice]).to eq(I18n.t('password_resets.update.success'))
@@ -177,7 +177,7 @@ RSpec.describe PasswordResetsController, type: :controller do
     it 'redirects to root' do
       expect do
         get :unlock, params: { id: locked_user.unlock_token }
-      end.not_to change(User.where(unlock_token: nil).count)
+      end.not_to change { User.where(unlock_token: nil).count }
 
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to eq(I18n.t('password_resets.unlock.logged_in_user'))
@@ -192,7 +192,7 @@ RSpec.describe PasswordResetsController, type: :controller do
     it 'redirects to root' do
       expect do
         get :unlock, params: { id: locked_user.unlock_token[0..-4] }
-      end.not_to change(User.where(unlock_token: nil).count)
+      end.not_to change { User.where(unlock_token: nil).count }
 
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to eq(I18n.t('password_resets.unlock.error'))
@@ -207,7 +207,7 @@ RSpec.describe PasswordResetsController, type: :controller do
     it 'redirects to root' do
       expect do
         get :unlock, params: { id: locked_user.unlock_token }
-      end.to change(User.where(unlock_token: nil).count).by(1)
+      end.to change { User.where(unlock_token: nil).count }.by(1)
 
       expect(response).to redirect_to(login_path)
       expect(flash[:notice]).to eq(I18n.t('password_resets.unlock.success'))

@@ -19,7 +19,7 @@ RSpec.describe ResetPassword do
     end
 
     it 'sends email' do
-      expect { subject.call }.to change(ActionMailer::Base.deliveries, :length).by(1)
+      expect { subject.call }.to change { ActionMailer::Base.deliveries.length }.by(1)
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe ResetPassword do
     end
 
     it 'does not send email' do
-      expect { subject.call }.not_to change(ActionMailer::Base.deliveries, :length)
+      expect { subject.call }.not_to change { ActionMailer::Base.deliveries.length }
     end
   end
 end

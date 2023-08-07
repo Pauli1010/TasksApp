@@ -24,6 +24,9 @@ Layout/LineLength:
     - 'spec/**/*.rb'
 Layout/TrailingEmptyLines:
   Enabled: false
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*.rb'
 Lint/MissingSuper:
   Enabled: false
 Metrics/AbcSize:

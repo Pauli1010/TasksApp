@@ -49,7 +49,7 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
       it 'redirects to login' do
         expect do
           post :create, params: { dictionary_item: data }
-        end.not_to change(DictionaryItem.count)
+        end.not_to change { DictionaryItem.count }
 
         expect(response).to redirect_to(login_path)
         expect(flash[:alert]).to eq(I18n.t('flash_messages.login_required'))
@@ -78,7 +78,7 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
       it 'redirects to login' do
         expect do
           delete :destroy, params: { id: dictionary_item.id }
-        end.not_to change(DictionaryItem.count)
+        end.not_to change { DictionaryItem.count }
 
         expect(response).to redirect_to(login_path)
         expect(flash[:alert]).to eq(I18n.t('flash_messages.login_required'))
@@ -120,7 +120,7 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
       it 'redirects to login' do
         expect do
           post :create, params: { dictionary_item: data }
-        end.not_to change(DictionaryItem.count)
+        end.not_to change { DictionaryItem.count }
 
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq(I18n.t('flash_messages.admin_required'))
@@ -149,7 +149,7 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
       it 'redirects to login' do
         expect do
           delete :destroy, params: { id: dictionary_item.id }
-        end.not_to change(DictionaryItem.count)
+        end.not_to change { DictionaryItem.count }
 
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq(I18n.t('flash_messages.admin_required'))
@@ -188,7 +188,7 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
       it 'creates item' do
         expect do
           patch :create, params: { dictionary_item: data }
-        end.to change(DictionaryItem.count).by(1)
+        end.to change { DictionaryItem.count }.by(1)
 
         expect(response).to redirect_to(admin_dictionaries_path)
         expect(flash[:notice]).to eq(I18n.t('admin.dictionary_items.create.success'))
@@ -201,7 +201,7 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
       it 'creates item' do
         expect do
           patch :create, params: { dictionary_item: {} }
-        end.not_to change(DictionaryItem.count)
+        end.not_to change { DictionaryItem.count }
 
         expect(response).to render_template(:new)
         expect(flash[:alert]).to eq(I18n.t('admin.dictionary_items.create.error'))
@@ -258,7 +258,7 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
       it 'it is destroyed' do
         expect do
           delete :destroy, params: { id: dictionary_item.id }
-        end.to change(DictionaryItem.count).by(-1)
+        end.to change { DictionaryItem.count }.by(-1)
 
         expect(response).to redirect_to(admin_dictionaries_path)
         expect(flash[:notice]).to eq(I18n.t('admin.dictionary_items.destroy.success'))
@@ -271,7 +271,7 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
         expect(DictionaryItem.find_by(id: nonexistent_index)).to be nil
         expect do
           delete :destroy, params: { id: nonexistent_index }
-        end.not_to change(DictionaryItem.count)
+        end.not_to change { DictionaryItem.count }
 
         expect(response).to redirect_to(admin_dictionaries_path)
         expect(flash[:alert]).to eq(I18n.t('admin.dictionary_items.show.no_item'))
