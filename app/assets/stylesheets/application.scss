@@ -62,6 +62,7 @@ hr.white { border-color: #fff; }
   background-color: rgba(0, 0, 0, 0.3);
   overflow-x: hidden;
   overflow-y: auto;
+
   .popup-bg {
     width: 100%;
     height: 100%;
@@ -82,7 +83,6 @@ hr.white { border-color: #fff; }
   }
   .card-body { padding: 40px; }
   .link { display: none; }
-
   .close {
     position: absolute;
     top: 10px;
@@ -278,7 +278,7 @@ tr.with-inputs {
   input.btn-xs { font-size: 0.7rem }
   input.btn-sm { font-size: 0.875rem; }
 
-  // bootrtrap
+  // bootstrap
   .btn-clear {
     background-color: #fff;
     position: absolute;
@@ -292,7 +292,7 @@ tr.with-inputs {
     &.doubled-appended-number { top: 5px; right: 65px; } // dates
   }
 
-  // bootrtrap custom elements
+  // bootstrap custom elements
   .bootstrap-select .btn.dropdown-toggle.btn-light { font-size: 0.8rem; background-color: #fff; border: 1px solid #ced4da; }
   .bootstrap-select .dropdown-menu,
   .bootstrap-select .dropdown-menu .btn { font-size: 0.8rem; }

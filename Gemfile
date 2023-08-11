@@ -1,3 +1,4 @@
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -29,7 +30,6 @@ gem "jbuilder"
 
 gem 'sorcery'
 
-# gem 'sass-rails', '>= 6'
 gem 'rails-i18n', '~> 7.0.0'
 gem "jquery-rails"
 gem 'sassc-rails', '>= 2.1.0'
