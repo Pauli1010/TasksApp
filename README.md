@@ -7,7 +7,7 @@ running it as it is and things that need to be done further.
 
 * Ruby version
 
-2.7.5
+3.4.4
 
 * System dependencies
 
