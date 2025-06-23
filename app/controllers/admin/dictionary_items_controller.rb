@@ -51,9 +51,7 @@ module Admin
     def destroy
       redirect_to(default_redirect_path, alert: I18n.t('show.no_item', scope: tr_scope)) and return unless item
 
-      @form = Admin::DictionaryItemForm.from_params(params)
-
-      Admin::DestroyDictionaryItem.call(@form, item, current_user) do
+      Admin::DestroyDictionaryItem.call(item, current_user) do
         on(:ok) { redirect_to(default_redirect_path, notice: I18n.t('destroy.success', scope: tr_scope)) }
         on(:invalid) do
           redirect_to(default_redirect_path, alert: I18n.t('destroy.error', scope: tr_scope))

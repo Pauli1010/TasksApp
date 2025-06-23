@@ -7,34 +7,28 @@ pl:
         name: Nazwa
         dictionary_id: Słownik
       user:
+        admin: Administrator
         created_at: Data rejestracji
         email: E-mail
+        first_name: Imię
+        last_name: Nazwisko
         password: Hasło
         password_confirmation: Powtórz hasło
         remember_me: Zapamiętaj mnie
         updated_at: Data aktualizacji danych
         user_name: Nazwa użytkownika
-      task:
-        due_time: Do kiedy
-        done_time: Wykonano
-        done: Zrobiono
-        highlited: Wyróżnione
-        note: Notatka
-        title: Nazwa
   activerecord:
     attributes:
       dictionary:
         headers:
           dictionary_items: Elementy słownika
           name: Nazwa
-      task:
+      user:
         headers:
-          due_time: Deadline
-          done_time: Wykonano
-          done: Zrobiono
-          highlited: Wyróżnione
-          note: Notatka
-          title: Nazwa zadania
+          first_name: Imię
+          last_name: Nazwisko
+          user_name: Nazwa użytkownika
+          user_full_name: Imię & Nazwisko
   account:
     edit:
       title: Edytuj swoje dane
@@ -70,9 +64,11 @@ pl:
         error: Nie udało się zaktualizować słownika
         success: Zaktualizowano słownik
     dictionary_items:
+      new:
+        title: Nowy element słownika
       create:
         error: Nie udało się dodać elementu słownika
-        success: Dodano element słownika
+        success: "Dodano element słownika: %{item_name}"
       destroy:
         error: Nie udało się usunąć elementu słownika
         success: Usunięto element słownika
@@ -83,16 +79,35 @@ pl:
       update:
         error: Nie udało się zaktualizować elementu słownika
         success: Zaktualizowano element słownika
+    users:
+      create:
+        error: Nie udało się dodać użytkownika
+        success: Dodano uzytkownika
+      destroy:
+        error: Nie udało się usunąć użytkownika
+        success: Usunięto uzytkownika
+      edit:
+        title: Edytuj dane użytkownika
+      index:
+        new: Dodaj użytkownika
+        title: Lista użytkowników
+      new:
+        title: Nowy użytkownik
+      show:
+        no_item: Nie znaleziono użytkownika
+      update:
+        error: Nie udało się zaktualizować danych użytkownika
+        success: Zaktualizowano dane użytkownika
   application:
-    header:
-      tasks: Zadania
     flash:
       close: Zamknij
-  booleans:
-    question:
-      true: Tak
-      false: Nie
+    header:
+      admin_dashboard: Panel administracyjny
+      dictionaries: Słowniki
   errors:
+    messages:
+      dictionary_not_found: Nie znaleziono słownika
+      taken_in_dictionary: Element o takiej nazwie znajduje już sie w słowniku
     password:
       required: Hasło jest wymagane
       too_short: Hasło jest za krótkie (musi mieć przynajmniej 3 znaki)
@@ -111,8 +126,8 @@ pl:
     order:
       asc: Sortuj rosnąco
       desc: Sortuj malejąco
-    time_left: 'Pozostało: %{time}'
-    past_time: 'Po czasie: %{time}'
+    permissions:
+      admin: Administrator
   password_resets:
     unlock:
       error: Nie udało sie odblokować konta.
@@ -158,28 +173,6 @@ pl:
       success: Zalogowano
     destroy:
       success: Wylogowano z systemu
-  tasks:
-    create:
-      error: Nie udało sie utworzyć zadania
-      success: Utworzono zadanie
-    destroy:
-      error: Nie udało się usunać zadania
-      success: Ununięto zadanie
-    edit:
-      title: Edytuj zadanie
-    form:
-      task_data: Dane zadania
-    index:
-      new: Nowe zadanie
-    new:
-      title: Nowe zadanie
-    show:
-      title: Dane zadania
-      edit: Edytuj
-    update:
-      error: Nie udało sie zaktualizować zadania
-      success: Zaktualizowano zadanie
-  sessions:
     new:
       forgot_password: Zapomniałeś hasła?
       register_account: Nie masz konta?
@@ -205,4 +198,5 @@ pl:
       edit: Edytuj
       no_data: Brak danych do wyświetlenia
       save: Zapisz
+      save_and_add_new: Zapisz i dodaj kolejny
       sort: Sortuj

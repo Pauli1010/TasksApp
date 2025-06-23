@@ -1,0 +1,12 @@
+%tr
+  %th{ scope: 'row' }= ln(i)
+  %th.text-center{ scope: 'row' }
+    - if item.admin?
+      .btn.btn-xs.btn-success.btn-hover-off= t('helpers.permissions.admin')
+  %td= link_to item.user_name || '', admin_user_path(item)
+  %td= link_to user_full_name(item), admin_user_path(item)
+  %td= item.email
+
+  %td.text-right
+    = link_to_edit(item)
+    = link_to_delete(item)

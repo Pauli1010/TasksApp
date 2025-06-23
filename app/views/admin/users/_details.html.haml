@@ -1,0 +1,13 @@
+.row
+  .col-sm-6
+    .row.fixed-medium-height
+      .col-sm-5.strong= t('activerecord.attributes.user.headers.name')
+      .col-sm-7= user_name(item)
+.row
+  .col-sm-6
+    .row.fixed-medium-height
+      .col-sm-5.strong= t('activerecord.attributes.user.headers.user_items')
+      .col-sm-7
+        %ul
+          - item.user_items.each do |user_item|
+            %li= link_to user_item.name, edit_admin_user_item_path(user_item), class: 'link'

@@ -1,0 +1,6 @@
+%th{ scope: 'col' } #
+%th.mini.text-center{ scope: 'col' }
+%th.text-left{ scope: 'col' }= table_sorting('user', 'user_name')
+%th= t('user_full_name', scope: 'activerecord.attributes.user.headers')
+%th= t('email', scope: 'activerecord.attributes.user.headers')
+%th{ scope: 'col' }

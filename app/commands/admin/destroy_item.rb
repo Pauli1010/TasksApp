@@ -2,8 +2,7 @@
 
 module Admin
   class DestroyItem < Rectify::Command
-    def initialize(form, item, user)
-      @form = form
+    def initialize(item, user)
       @item = item
       @user = user
     end
@@ -20,7 +19,7 @@ module Admin
 
     private
 
-    attr_reader :form, :user, :item
+    attr_reader :user, :item
 
     def destroy_item
       item.destroy

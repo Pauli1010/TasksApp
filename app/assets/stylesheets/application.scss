@@ -1,6 +1,6 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
-@import "bootstrap-datepicker";
+//@import "bootstrap-datepicker";
 @import "floating-labels";
 @import "sessions";
 
@@ -46,6 +46,10 @@ ul {
   color: #fff;
 }
 
+th.mini, tr.mini {
+  width: 55px;
+}
+
   // form
 .simple_form.customized {
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -62,46 +66,6 @@ form {
   }
 }
 
-.popup {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.3);
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  .popup-bg {
-    width: 100%;
-    height: 100%;
-    //background-color: rgba(0, 0, 0, 0.3);
-  }
-  .popup-box {
-    position: absolute;
-    width: 300px;
-    height: 250px;
-    top: calc(50vh - 125px);
-    left: calc(50vw - 150px);
-  }
-  &.add-new-data .popup-box {
-    width: 1200px;
-    height: auto;
-    top: 120px;
-    left: calc(50vw - 600px);
-  }
-  .card-body { padding: 40px; }
-  .link { display: none; }
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    z-index: 10;
-  }
-}
-
 .avatar {
   width: 30px;
   height: 30px;
@@ -114,21 +78,46 @@ form {
   -moz-border-radius: 50%;
 }
 
+.input.boolean {
+  width: 50%;
+  padding-top: 10px;
+  input.boolean { width: auto; margin-right: 10px; }
+}
+
 // buttons
 .link { font-size: 0.9rem; }
 a.btn, .btn {
   display: inline-block;
+  vertical-align: middle;
+  line-height: 1.5;
+
+  &.btn-success.btn-hover-off:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+    cursor: auto;
+  }
 }
+
+.btn-xxs {
+  padding: 0.2rem 0.2rem;
+  font-size: 0.5rem;
+  line-height: 0.75;
+}
+
 .btn-xs {
   padding: 0.25rem 0.3rem;
   font-size: 0.7rem;
   line-height: 1;
 }
 
+a.btn-sm,
 .btn-sm {
   display: inline-block;
   height: 32px;
   border-width: 1px;
+  vertical-align: middle;
+  line-height: 1.5;
+  padding: 0.35rem 0.5rem;
   &:hover {
     text-decoration: none !important;
   }
@@ -145,7 +134,22 @@ a.btn, .btn {
     width: calc(50% - 15px);
   }
 
-  .input input { width: 50%; }
+  .input { padding: 5px; }
+  .input input[type='text'],
+  .input input[type='email'] {
+    padding: 3px 5px;
+    width: 50%;
+    height: 35px;
+    border: 1px solid #999;
+    border-radius: 5px;
+  }
+
+  input[type='submit'] {
+    padding: 3px 15px;
+    height: 35px;
+    border-radius: 5px;
+    margin: 0 10px;
+  }
 }
 
 .card-header.bigger {
@@ -159,4 +163,5 @@ a.btn, .btn {
     font-size: 1rem;
     line-height: 1.2;
   }
+
 }

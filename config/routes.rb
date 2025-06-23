@@ -36,5 +36,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dictionaries
     resources :dictionary_items
+    resources :users
   end
 end

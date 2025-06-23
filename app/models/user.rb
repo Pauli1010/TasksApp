@@ -24,4 +24,8 @@ class User < ApplicationRecord
     # "#{first_name.first}#{last_name.first}"
     user_name&.first.presence || email.first
   end
+
+  def destroyable?
+    !admin?
+  end
 end
