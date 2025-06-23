@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 RSpec.describe RegistrationForm, type: :form do
   subject { described_class.from_params(email: email, password: pass, password_confirmation: pass_conf) }
   let(:email) { Faker::Internet.email }

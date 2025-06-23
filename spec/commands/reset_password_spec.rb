@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 RSpec.describe ResetPassword do
   subject { described_class.new(form) }
   let(:user) { create(:user) }

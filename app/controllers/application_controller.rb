@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   # OVERWRITTEN SORCERY METHOD
   # Sets login path as a route for not authenticated user
   def not_authenticated
-    redirect_to login_path, alert: t('flash_messages.login_required')
+    redirect_to login_path, alert: I18n.t('flash_messages.login_required')
   end
 end

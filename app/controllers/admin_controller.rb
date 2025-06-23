@@ -17,7 +17,7 @@ class AdminController < ApplicationController
   private
 
   def require_admin
-    redirect_to root_path, alert: t('flash_messages.admin_required') and return unless current_user.admin?
+    redirect_to root_path, alert: I18n.t('flash_messages.admin_required') and return unless current_user.admin?
   end
 
   def default_redirect_path

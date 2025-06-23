@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 RSpec.describe AccountForm, type: :form do
   subject { described_class.from_params(user_name: user_name) }
   let(:user_name) { Faker::Name.name }

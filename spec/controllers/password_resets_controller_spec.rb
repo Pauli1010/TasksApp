@@ -35,6 +35,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
   context 'for logged in user' do
     let(:current_user) { resetting_user }
+
     describe 'when getting action new' do
       it 'redirects to account' do
         get :new
@@ -97,9 +98,8 @@ RSpec.describe PasswordResetsController, type: :controller do
         end.not_to change { ActionMailer::Base.deliveries.length }
       end.not_to change { User.where(reset_password_token: nil).count }
 
-      expect(flash[:alert]).to eq(I18n.t('password_resets.create.error'))
-      expect(response.status).to eq(200)
-      expect(subject).to render_template(:new)
+      expect(flash[:notice]).to eq(I18n.t('password_resets.create.success'))
+      expect(response).to redirect_to(login_path)
     end
   end
 

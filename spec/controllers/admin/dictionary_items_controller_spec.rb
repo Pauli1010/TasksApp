@@ -11,6 +11,8 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
   let!(:dictionary_item) { create(:dictionary_item) }
   let!(:data) { attributes_for(:dictionary_item).merge(dictionary_id: dictionary.id) }
 
+  let(:nonexistent_index) { 33 }
+
   before do
     3.times { create(:dictionary_item) }
     login_user(current_user) if current_user
@@ -218,7 +220,6 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
 
     describe 'when getting action edit of non existent dictionary_item' do
       it 'redirects to index' do
-        nonexistent_index = 33
         expect(DictionaryItem.find_by(id: nonexistent_index)).to be nil
         get :edit, params: { id: nonexistent_index }
 
@@ -267,7 +268,6 @@ RSpec.describe Admin::DictionaryItemsController, type: :controller do
 
     describe 'when destroying dictionary_item with non existing index' do
       it 'redirects to index' do
-        nonexistent_index = 33
         expect(DictionaryItem.find_by(id: nonexistent_index)).to be nil
         expect do
           delete :destroy, params: { id: nonexistent_index }
