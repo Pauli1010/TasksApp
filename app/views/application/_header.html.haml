@@ -1,13 +1,15 @@
 %header
   %nav{ class: 'navbar navbar-expand-lg navbar-dark bg-dark' }
-    = link_to 'StartApp', root_path, class: 'navbar-brand'
+    = link_to 'TasksApp', root_path, class: 'navbar-brand'
     %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#mainMenu' }, aria: { controls: 'mainMenu', expanded: 'false', label: 'Toggle navigation' }}
       %span.navbar-toggler-icon
 
     #mainMenu.collapse.navbar-collapse
       %ul.navbar-nav.mr-auto
-        %li.nav-item
-          = link_to t('.asset'), '', class: "#{menu_is_active('tasks')} nav-item nav-link"
+        %li.nav-item.dropdown
+          = link_to t('.assets'), '', class: "#{menu_is_active('tasks')} nav-item nav-link", id: 'assets-dropdown-menu-link', role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false }
+          %div.dropdown-menu{ aria: {labelledby: 'assets-dropdown-menu-link' }}
+            = link_to t('.tasks'), tasks_path, class: "#{menu_is_active('tasks')} dropdown-item"
         - if current_user.admin?
           %li.nav-item.dropdown
             = link_to t('.admin_dashboard'), '', class: "#{admin_dashboard_scope?} nav-item nav-link", id: 'admin-dropdown-menu-link', role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false }

@@ -6,6 +6,13 @@ pl:
       dictionary_item:
         name: Nazwa
         dictionary_id: Słownik
+      task:
+        due_time: Do kiedy
+        done_time: Wykonano
+        done: Zrobiono
+        highlited: Wyróżnione
+        note: Notatka
+        title: Nazwa
       user:
         admin: Administrator
         created_at: Data rejestracji
@@ -23,6 +30,14 @@ pl:
         headers:
           dictionary_items: Elementy słownika
           name: Nazwa
+      task:
+        headers:
+          due_time: Deadline
+          done_time: Wykonano
+          done: Zrobiono
+          highlited: Wyróżnione
+          note: Notatka
+          title: Nazwa zadania
       user:
         headers:
           first_name: Imię
@@ -103,7 +118,14 @@ pl:
       close: Zamknij
     header:
       admin_dashboard: Panel administracyjny
+      assets: Zasoby
       dictionaries: Słowniki
+      tasks: Zadania
+      users: Użytkownicy
+  booleans:
+    question:
+      true: Tak
+      false: Nie
   errors:
     messages:
       dictionary_not_found: Nie znaleziono słownika
@@ -128,6 +150,8 @@ pl:
       desc: Sortuj malejąco
     permissions:
       admin: Administrator
+    time_left: 'Pozostało: %{time}'
+    past_time: 'Po czasie: %{time}'
   password_resets:
     unlock:
       error: Nie udało sie odblokować konta.
@@ -182,6 +206,27 @@ pl:
     form:
       legend: Zaloguj się do systemu
       login: Zaloguj się
+  tasks:
+    create:
+      error: Nie udało sie utworzyć zadania
+      success: Utworzono zadanie
+    destroy:
+      error: Nie udało się usunać zadania
+      success: Ununięto zadanie
+    edit:
+      title: Edytuj zadanie
+    form:
+      task_data: Dane zadania
+    index:
+      new: Nowe zadanie
+    new:
+      title: Nowe zadanie
+    show:
+      title: Dane zadania
+      edit: Edytuj
+    update:
+      error: Nie udało sie zaktualizować zadania
+      success: Zaktualizowano zadanie
   time:
     formats:
       date_and_time: "%d-%m-%Y %H:%M"

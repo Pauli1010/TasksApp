@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post    'login'   => 'sessions#create'
   match   'logout'  => 'sessions#destroy',  :as => :logout, via: [:get, :delete]
 
-  resource 'account', only: [:show, :edit, :update], controller: :account do
+  resource 'account', only: [:show, :edit, :update], controller: :account, account_scope: true do
     member do
       get :edit_password
       post :update_password
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :admin do
+  namespace :admin, admin_scope: true do
     resources :dictionaries
     resources :dictionary_items
     resources :users

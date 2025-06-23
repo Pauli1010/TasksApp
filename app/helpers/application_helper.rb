@@ -5,6 +5,14 @@ module ApplicationHelper
     'active' if controller == controller_name && ((action && action == action_name) || !action)
   end
 
+  def admin_dashboard_scope?
+    'active' if params[:admin_scope]
+  end
+
+  def account_scope?
+    'active' if params[:account_scope]
+  end
+
   def user_avatar(user)
     tag.div user_initials(user), class: 'avatar'
   end
@@ -58,6 +66,7 @@ module ApplicationHelper
       val ? 'check-circle-fill' : 'x-circle-fill',
       {
         class: 'text-success',
+        fill: val ? '#28a745' : '#dc3545',
         title: t(val, scope: 'booleans.question'),
         data: { toggle: 'tooltip' }
       }
@@ -75,14 +84,14 @@ module ApplicationHelper
     end
   end
 
-  def link_to_edit(item, controller = controller_name)
+  def link_to_edit(item, controller = controller_name, size = 'btn-xs')
     url = { controller: controller, action: :edit, id: item.id }
-    link_to(url, title: t('views.shared.edit'), class: 'btn btn-xs btn-info') do
-      default_bootstrap_icon 'pencil'
+    link_to(url, title: t('views.shared.edit'), class: "btn #{size} btn-info") do
+      default_bootstrap_icon 'pencil', bootstrap_icon_size(size)
     end
   end
 
-  def link_to_delete(item, controller = controller_name)
+  def link_to_delete(item, controller = controller_name, size = 'btn-xs')
     return if item.respond_to?(:destroyable?) && !item.destroyable?
 
     url = { controller: controller, action: :destroy, id: item.id }
@@ -90,8 +99,8 @@ module ApplicationHelper
             method: :delete,
             title: t('views.shared.delete'),
             data: { confirm: t('helpers.confirm') },
-            class: 'btn btn-xs btn-danger') do
-      default_bootstrap_icon 'trash'
+            class: "btn #{size} btn-danger") do
+      default_bootstrap_icon 'trash', bootstrap_icon_size(size)
     end
   end
 
@@ -126,6 +135,14 @@ module ApplicationHelper
       %w[success check]
     else
       ['', '']
+    end
+  end
+
+  def bootstrap_icon_size(size)
+    if size == 'btn-xxs'
+      { width: 9, height: 9 }
+    else
+      { width: 12, height: 12 }
     end
   end
 
